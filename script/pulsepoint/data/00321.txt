@@ -1,0 +1,32 @@
+Salem Fire Department Unix: 0Salem Fire Department Unix: 0description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M8	Unix: 1435269600
+description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M7	Unix: 1435269600
+description: Interfacility Transfer	address: ADDRESS NOT AVAILABLE	units: M3	Unix: 1435269600
+Salem Fire Department Unix: 0Salem Fire Department Unix: 0description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M8	Unix: 1435269600
+description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M7	Unix: 1435269600
+Salem Fire Department Unix: 0description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M8	Unix: 1435269600
+description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M7	Unix: 1435269600
+description: Interfacility Transfer	address: ADDRESS NOT AVAILABLE	units: M3	Unix: 1435269600
+description: Fire Alarm	address: 2776 MILITIA WY SE	units: E10	Unix: 2870529857
+description: Odor Investigation	address: 1532 CENTER ST NE	units: E1, L2	Unix: 2870535642
+description: Fire Alarm	address: 4669 RIVERDALE RD S	units: E4	Unix: 2870545589
+description: Outside Fire	address: 2100 TURNER RD SE	units: E6	Unix: 2870553833
+Salem Fire Department Unix: 0description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M8	Unix: 1435269600
+description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M7	Unix: 1435269600
+Salem Fire Department Unix: 0description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M8	Unix: 1435269600
+description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M7	Unix: 1435269600
+description: Interfacility Transfer	address: ADDRESS NOT AVAILABLE	units: M3	Unix: 1435269600
+description: Fire Alarm	address: 2776 MILITIA WY SE	units: E10	Unix: 2870529857
+description: Odor Investigation	address: 1532 CENTER ST NE	units: E1, L2	Unix: 2870535642
+description: Fire Alarm	address: 4669 RIVERDALE RD S	units: E4	Unix: 2870545589
+description: Outside Fire	address: 2100 TURNER RD SE	units: E6	Unix: 2870553833
+description: Investigation	address: 24TH PL NE	units: E3	Unix: 2870554660
+description: Interfacility Transfer	address: 890 OAK ST SE	units: M4	Unix: 2870557451
+description: Interfacility Transfer	address: 890 OAK ST SE	units: M3	Unix: 2870574492
+description: Extinguished Fire	address: 4405 COMMERCIAL ST SE	units: FM7	Unix: 2870604095
+description: Fire Alarm	address: 4403 COMMERCIAL ST SE	units: None	Unix: 2870604288
+description: Fire Alarm	address: 4121 CHAMBERS AV S	units: E4	Unix: 2870605353
+description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M5	Unix: 0
+description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M7	Unix: 0
+Salem Fire Department Unix: 0description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M8	Unix: 1435269600
+description: Interfacility Transfer	address: 1790 FRONT ST NE	units: M7	Unix: 1435269600
+description: Interfacility Transfer	address: ADDRESS NOT AVAILABLE	units: M3	Unix: 1435269600

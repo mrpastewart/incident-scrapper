@@ -1,0 +1,1726 @@
+State: WA
+City/Twp/Box#: AIRWAY HEIGHTS
+County: Spokane County
+
+Incident: Vegetation Fire
+Address: S LAWSON ST
+Unit: AHA1, A101, AH20, AHB1, 1020
+Latlng: 47.6429170000,-117.5877590000
+Date: A
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: HAYWARD
+County: Alameda County
+
+Incident: Traffic Collision
+Address: 20882 MISSION BL
+Unit: E23, R24
+Latlng: 37.6847819722,-122.0988266667
+Date: r
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OH
+City/Twp/Box#: N RIDGEVILLE
+County: Cuyahoga County
+
+Incident: Traffic Collision
+Address: 5499 AVON BELDEN RD
+Unit: NRE24
+Latlng: 41.4101758000,-82.0186587000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: WATSONVILLE
+County: Santa Cruz County
+
+Incident: Traffic Collision
+Address: 1501 FREEDOM BL
+Unit: T4470
+Latlng: 36.9304113788,-121.7684693994
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: VISTA
+County: San Diego County
+
+Incident: Traffic Collision
+Address: LEMON AV
+Unit: 1216, 1296, SHF4, 12R1
+Latlng: 33.2102850000,-117.2399360000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: AZ
+City/Twp/Box#: BLDG SOUTH, SAHUARITA
+County: Pima County
+
+Incident: Residential Fire
+Address: 428 E PLACITA LEZNA
+Unit: E82, E79, E81, P879, UT74, BC72, T82, T71, P855
+Latlng: 31.9807210000,-110.9664330000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: OR
+City/Twp/Box#: HILLSBORO
+County: Washington County
+
+Incident: Gas Main
+Address: NW WEST UNION RD & NW 203RD PLAC
+Unit: E64
+Latlng: 45.5614412495,-122.8852280993
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: OR
+City/Twp/Box#: POLK COUNTY
+County: Polk County
+
+Incident: Traffic Collision
+Address: 2175 PERRYDALE RD
+Unit: D110, M103, R101, E110, C100
+Latlng: 44.9646366755,-123.3010185486
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: WA
+City/Twp/Box#: SPOKANE VALLEY
+County: Spokane County
+
+Incident: Traffic Collision
+Address: E SPRAGUE AVE
+Unit: VE12
+Latlng: 47.6571340000,-117.3320020000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: WA
+City/Twp/Box#: SPOKANE
+County: Spokane County
+
+Incident: Traffic Collision
+Address: W NORTHWEST BLVD
+Unit: SE4, ME1, SSP1, AM136
+Latlng: 47.6749380000,-117.4266780000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: WA
+City/Twp/Box#: SPOKANE COUNTY
+County: Spokane County
+
+Incident: Hazmat Response
+Address: 1159 E QUARTZ LN
+Unit: E94, E912, E98, L91, 920, E92, 930, E90, E99, AVIS, 990, E49, 940
+Latlng: 47.7805040000,-117.3945310000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: WA
+City/Twp/Box#: SPOKANE COUNTY
+County: Spokane County
+
+Incident: Hazardous Condition
+Address: 5920 S MT VERNON RD
+Unit: E81, B81, M81
+Latlng: 47.6004740000,-117.3712800000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: WA
+City/Twp/Box#: SPOKANE COUNTY
+County: Spokane County
+
+Incident: Vegetation Fire
+Address: 17022 N LOGAN LN
+Unit: B49, B44, B45, T49, T45, P47, 420, DNR, 430, T44
+Latlng: 47.8123640000,-117.4780080000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: WA
+City/Twp/Box#: SPOKANE COUNTY
+County: Spokane County
+
+Incident: Traffic Collision
+Address: 58 MP269 WB
+Unit: R31, M33, 320, ME1, WSP, AM114
+Latlng: 47.5524200000,-117.6203450000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: 
+County: Santa Clara County
+
+Incident: Traffic Collision
+Address: MAPLE AVE & MURPHY AVE
+Unit: None
+Latlng: 37.1128041347,-121.6161517063
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: SD
+City/Twp/Box#: SIOUX FALLS
+County: Minnehaha County
+
+Incident: Traffic Collision
+Address: 3000 W MADISON ST
+Unit: S625, USAR 8, 103
+Latlng: 43.5591596480,-96.7685725820
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: SANTEE
+County: San Diego County
+
+Incident: Traffic Collision
+Address: MISSION GORGE RD
+Unit: M5, R5
+Latlng: 32.8386630000,-116.9957790000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: SANTA CRUZ
+County: Santa Cruz County
+
+Incident: Wires Down
+Address: MARINER PARK WY
+Unit: T3170
+Latlng: 36.9643533212,-122.0036536968
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: msic
+State: CA
+City/Twp/Box#: LOS ALTOS HILLS
+County: Santa Clara County
+
+Incident: Structure Fire
+Address: 13432 MIDDLE FORK LANE
+Unit: R74, E75, E76, B74, PAE62
+Latlng: 37.3761844502,-122.1571797130
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: CUYAMA
+County: Santa Barbara County
+
+Incident: Hazardous Condition
+Address: 3000 HWY 166
+Unit: ME41
+Latlng: 34.9369650000,-119.6249940000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: OR
+City/Twp/Box#: SANDY
+County: Clackamas County
+
+Incident: Traffic Collision
+Address: 16625 362ND DR
+Unit: C70, E74, R71, M276, MEDA, E72
+Latlng: 45.4039705693,-122.2908868984
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: DANVILLE
+County: Contra Costa County
+
+Incident: Hazardous Condition
+Address: 376 LINDA MESA AVE
+Unit: E31, HM35
+Latlng: 37.8193153624,-122.0063936989
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: CA
+City/Twp/Box#: SAN MARCOS
+County: San Diego County
+
+Incident: Traffic Collision
+Address: 200 E BARHAM DR
+Unit: 1491, 1411
+Latlng: 33.1331700000,-117.1611360000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: SAN JOSE
+County: Santa Clara County
+
+Incident: Vegetation Fire
+Address: HICKS RD & BURKE RD
+Unit: CDF
+Latlng: 37.2252933889,-121.9063426944
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: SAN DIEGO
+County: San Diego County
+
+Incident: Traffic Collision
+Address: I-805 SB
+Unit: E19, M32, M31, E14
+Latlng: 32.7336110000,-117.1130560000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: Vegetation Fire
+Address: BROADWAY ST NE
+Unit: E2
+Latlng: 44.9519398897,-123.0310196438
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: AR
+City/Twp/Box#: ROGERS
+County: Benton County
+
+Incident: Structure Fire
+Address: 2714 W MAGNOLIA ST
+Unit: ENGINE 2, RESCUE 5, MEDIC 4, ENGINE 7, ENGINE 6, LADDER 5, ENGINE 4, BC1
+Latlng: 36.3216744590,-94.1603025470
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CO
+City/Twp/Box#: FORT COLLINS
+County: Larimer County
+
+Incident: Traffic Collision
+Address: 901 E HARMONY EB RD
+Unit: PV203, EN5
+Latlng: 40.5231340000,-105.0613010000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: TX
+City/Twp/Box#: PLANO
+County: Collin County
+
+Incident: Gas Main
+Address: 3000 HOFFMAN DR
+Unit: ENG4
+Latlng: 33.0729770000,-96.7502340000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: CA
+City/Twp/Box#: PINOLE
+County: Contra Costa County
+
+Incident: Traffic Collision
+Address: 1677 SAN PABLO AVE
+Unit: AMRA308, E173, PM210
+Latlng: 38.0041790000,-122.2976140000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: PALO ALTO
+County: Santa Clara County
+
+Incident: Traffic Collision
+Address: SAND HILL RD & DURAND WAY
+Unit: M65, E66, AMB11, E61
+Latlng: 37.4375130830,-122.1781893880
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: FL
+City/Twp/Box#: ORLANDO
+County: Orange County
+
+Incident: Hazardous Condition
+Address: 2523 E WASHINGTON ST
+Unit: T006
+Latlng: 28.5441831496,-81.3506393778
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: CA
+City/Twp/Box#: ORANGE
+County: Orange County
+
+Incident: Traffic Collision
+Address: 1909 E ADAMS AV
+Unit: OE2, OR4
+Latlng: 33.8066776832,-117.8333145279
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: OCEANSIDE
+County: San Diego County
+
+Incident: Traffic Collision
+Address: PIERVIEW WY
+Unit: 2111, 2191, OPD1, 21R3
+Latlng: 33.1981120000,-117.3779800000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OH
+City/Twp/Box#: NORTH OLMSTED
+County: Cuyahoga County
+
+Incident: Vehicle Fire
+Address: CLAGUE RD I-480 WB
+Unit: ENG1
+Latlng: 41.4156025000,-81.9234726000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: NEWPORT BEACH
+County: Orange County
+
+Incident: Traffic Collision
+Address: JAMBOREE RD / SAN JOAQUIN RD
+Unit: NE64, NM65, NT63, NE65, NE62, NA62, CARE, NB6, NM62, AT10, NSAF7
+Latlng: 33.6233070000,-117.8813260000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: NATIONAL CITY
+County: San Diego County
+
+Incident: Traffic Collision
+Address: E 21ST ST & I AV
+Unit: NCT34, AM496, AM417
+Latlng: 32.6671970000,-117.0933200000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: ORINDA
+County: Contra Costa County
+
+Incident: Traffic Collision
+Address: SR 24 W / FISH RANCH RD
+Unit: E145, M144, E143, BC4
+Latlng: 37.8613890000,-122.2102780000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: ND
+City/Twp/Box#: MOORHEAD
+County: Clay County
+
+Incident: Traffic Collision
+Address: 14 ST N
+Unit: 6754, RS1, 900, E1, 609, 308, 306, 202, 310
+Latlng: 46.8761056950,-96.7574212340
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OR
+City/Twp/Box#: MOLALLA
+County: Clackamas County
+
+Incident: Traffic Collision
+Address: 28301 S HWY 213
+Unit: DO80, E81, E82, SQ82, M81, MOVOL, M82, C82
+Latlng: 45.1992414135,-122.5887465507
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: MILPITAS
+County: Santa Clara County
+
+Incident: Vegetation Fire
+Address: UD JACKLIN TO NB 680
+Unit: E87, E86, E686, USAR86, TK86
+Latlng: 37.4471270000,-121.8903560000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: OR
+City/Twp/Box#: MARION COUNTY
+County: Marion County
+
+Incident: Traffic Collision
+Address: 300 CORDON RD NE
+Unit: E315, M31, BC32, R323
+Latlng: 44.9314989304,-122.9588399607
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: WI
+City/Twp/Box#: MADISON
+County: Dane County
+
+Incident: Vehicle Fire
+Address: N LAKE ST
+Unit: L1
+Latlng: 43.0732210000,-89.3974320000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: LOS ANGELES
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: 1670 N BEVERLY GLEN BLVD
+Unit: E37
+Latlng: 34.1010810000,-118.4450430000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: LOS ANGELES
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: 7500 N COLDWATER CANYON AVE
+Unit: RA889
+Latlng: 34.2066170000,-118.4144230000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: LOS ANGELES
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: 16031 S FIGUEROA ST
+Unit: E79
+Latlng: 33.8854690000,-118.2827840000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: LOS ANGELES
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: 1680 SB 110 FWY
+Unit: E11, E10, RA810, RA811
+Latlng: 34.0270260000,-118.2747160000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: BELL GARDENS
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: E GAGE AVE & S EASTERN AVE
+Unit: E39, S39
+Latlng: 33.9754700000,-118.1636200000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: POMONA
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: 1600 S GAREY AVE
+Unit: LF185, S184
+Latlng: 34.0415800000,-117.7495499997
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: AGOURA
+County: Los Angeles County
+
+Incident: Vegetation Fire
+Address: 3230 CORNELL RD
+Unit: E65, S89, P65, E67, E144, E68, E89, E72, E88, DZ1, TRAN6, CN15, COPT14, LFDCOPT, COPT12, WT144, CC135, CC132, CC131, CC82, SU13, SU9, SU20, BC5, BC6, BRU, HEO, P144
+Latlng: 34.1207500002,-118.7503850007
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: STE #1-2, HAWTHORNE
+County: Los Angeles County
+
+Incident: Structure Fire
+Address: 2306 W IMPERIAL HWY
+Unit: Q159, Q110, E14, E161, E171, E160, E21, S14, BC13, LF170, BC18
+Latlng: 33.9310000007,-118.3193550000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: FAIRMONT
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: 25000 PINE CANYON RD
+Unit: P78, E78, S84
+Latlng: 34.7184000028,-118.5738149940
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: HAWAIIAN GARDENS
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: 12300 E CARSON ST
+Unit: E34, S45, S30
+Latlng: 33.8314900047,-118.0687650001
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: ALTADENA
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: 210 FWY & WINDSOR AVE
+Unit: E11, S19, S11
+Latlng: 34.1812800000,-118.1689700000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: COVINA
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: 155 S ASHTON DR
+Unit: Q153, E154, S154, BC16
+Latlng: 34.0848450000,-117.8607700000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: GARDENA
+County: Los Angeles County
+
+Incident: Traffic Collision
+Address: S BROADWAY & W REDONDO BEACH BLVD
+Unit: E236, S116
+Latlng: 33.8928100000,-118.2786300000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: STE #704, LONG BEACH
+County: Los Angeles County
+
+Incident: Residential Fire
+Address: 240 CHESTNUT AVE
+Unit: BC1, BC2, E20, E2, E3, T17, T7, E10, E6, R1, R9, USAR6, T1
+Latlng: 33.7701160000,-118.1959690000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: LIVERMORE
+County: Alameda County
+
+Incident: Wires Down
+Address: 958 EL CAMINITO
+Unit: E99
+Latlng: 37.6672909167,-121.7840729722
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: msic
+State: NV
+City/Twp/Box#: LAS VEGAS
+County: Clark County
+
+Incident: Traffic Collision
+Address: E RENO AVE
+Unit: None
+Latlng: 36.0972670000,-115.1682790000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: ON
+City/Twp/Box#: KINGSTON
+County: Frontenac County
+
+Incident: Structure Fire
+Address: RIDEAU ST
+Unit: p251, p241, p201, c241, l261
+Latlng: 44.2436000000,-76.4840000000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: HUNTINGTON BCH
+County: Orange County
+
+Incident: Traffic Collision
+Address: 17492 DUELLO DR
+Unit: HE41, HT42, HET46
+Latlng: 33.7091252420,-118.0051444440
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OR
+City/Twp/Box#: BRIGHTWOOD
+County: Clackamas County
+
+Incident: Hazardous Condition
+Address: E BARLOW TRAIL & E ROAD 14
+Unit: C251, E252, E254, WT251, E251, R251, 2541
+Latlng: 45.3796043610,-122.0273657597
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: CA
+City/Twp/Box#: SAN BENITO CO
+County: San Benito County
+
+Incident: Traffic Collision
+Address: FAIRVIEW RD
+Unit: HTAC1, C9203, E13, SCUENG, HF1, R61
+Latlng: 36.9371358640,-121.4001765099
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OR
+City/Twp/Box#: HILLSBORO
+County: Washington County
+
+Incident: Gas Main
+Address: 1416 NW JACKSON ST
+Unit: E01
+Latlng: 45.5250897101,-123.0050576060
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: CA
+City/Twp/Box#: LA MESA
+County: San Diego County
+
+Incident: Traffic Collision
+Address: EL CAJON BL
+Unit: E11, MH5, 4308
+Latlng: 32.7697560000,-117.0249360000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: HAYWARD
+County: Alameda County
+
+Incident: Traffic Collision
+Address: 26657 MISSION BLVD
+Unit: ENG2
+Latlng: 37.6475475870,-122.0646368760
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: SD
+City/Twp/Box#: GROTON
+County: Brown County
+
+Incident: Traffic Collision
+Address: 12 & 401ST AVE
+Unit: None
+Latlng: 45.4631100000,-98.4467410000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: GARDEN GROVE
+County: Orange County
+
+Incident: Traffic Collision
+Address: 10608 GARDEN GROVE BL
+Unit: GE1, GA2, CARE, GA1, GM1
+Latlng: 33.7741570000,-117.9469630000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: FULLERTON
+County: Orange County
+
+Incident: Traffic Collision
+Address: S RICHMAN AV / W ORANGETHORPE AV
+Unit: FE1, FT1, FA1
+Latlng: 33.8594820000,-117.9330790000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: FREMONT
+County: Alameda County
+
+Incident: Vegetation Fire
+Address: I-680 NB
+Unit: B05, B06, CDF, E354, E455, E461, E51, E57, WT53, E359, E61
+Latlng: 37.4814598056,-121.9129835278
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: FOUNTAIN VALLEY
+County: Orange County
+
+Incident: Traffic Collision
+Address: BROOKHURST ST / WARNER AV
+Unit: VE31, VA31
+Latlng: 33.7162660949,-117.9544871755
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OR
+City/Twp/Box#: FOREST GROVE
+County: Washington County
+
+Incident: Vehicle Fire
+Address: SW HWY 47 & B ST
+Unit: STA11, STA4, E421, E1171
+Latlng: 45.5026039245,-123.1154173869
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: ND
+City/Twp/Box#: FARGO
+County: Cass County
+
+Incident: Traffic Collision
+Address: 3011 25 ST S
+Unit: BATT2, TRUCK1, D243, D141, 807, 802, D223, 6744, 603, Z21, 856, TRUCK2
+Latlng: 46.8348242640,-96.8205393100
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OR
+City/Twp/Box#: ESTACADA
+County: Clackamas County
+
+Incident: Water Rescue
+Address: 24101 S ENTRANCE RD
+Unit: C113, R111, RANGER, MEDA, C110, M269, T8, WR8
+Latlng: 45.2910174589,-122.3658455127
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: rescue
+State: KY
+City/Twp/Box#: ERLANGER
+County: Kenton County
+
+Incident: Traffic Collision
+Address: DONALDSON HWY/HOLLY LN
+Unit: 327, 301, 311, E51, M64
+Latlng: 39.0280097000,-84.6158453000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: ENCINITAS
+County: San Diego County
+
+Incident: Commercial Fire
+Address: 618 618 BIRMINGHAM DR
+Unit: None
+Latlng: 33.0258940000,-117.2767600000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: OAKLEY
+County: Contra Costa County
+
+Incident: Technical Rescue
+Address: 530 DELTA RD
+Unit: E193, E152, BC5, AMRA301, PM180, CSTAR, PGE, CSTAR1, E188, 5100, AMRA3, PM171
+Latlng: 37.9688590000,-121.6858770000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: rescue
+State: CA
+City/Twp/Box#: DEL MAR
+County: San Diego County
+
+Incident: Traffic Collision
+Address: VIA DE LA VALLE
+Unit: 2511, AM494, 25R2
+Latlng: 32.9793660000,-117.2568130000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: DAVIS
+County: Yolo County
+
+Incident: Hazardous Condition
+Address: E 8TH ST & POLE LINE RD
+Unit: E31
+Latlng: 38.5533738000,-121.7273676000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: WI
+City/Twp/Box#: VERONA
+County: Dane County
+
+Incident: Hazardous Condition
+Address: 100 ENTERPRISE DR
+Unit: VEE1
+Latlng: 42.9932010000,-89.5269960000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: CA
+City/Twp/Box#: PLEASANT HILL
+County: Contra Costa County
+
+Incident: Residential Fire
+Address: 2124 JANICE DR
+Unit: E105, Q101, E106, E115, E111, BC1, BC4, TIMER1, SQ6, PD, T106
+Latlng: 37.9477690000,-122.0540610000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: OH
+City/Twp/Box#: BEXLEY
+County: Franklin County
+
+Incident: Structure Fire
+Address: 2600 E MAIN ST
+Unit: E15, B4, B6, E20, E21, E8, EMS14, L15, L8, M20, M21, R4
+Latlng: 39.9571844722,-82.9283642500
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: OH
+City/Twp/Box#: CLEVELAND
+County: Cuyahoga County
+
+Incident: Structure Fire
+Address: 9801 CARNEGIE AVE
+Unit: E10, L10, B02
+Latlng: 41.5018843072,-81.6198018790
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: WA
+City/Twp/Box#: VANCOUVER
+County: Clark County
+
+Incident: Traffic Collision
+Address: 8801 NE VANCOUVER MALL LOOP
+Unit: E5
+Latlng: 45.6595642914,-122.5836795591
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OR
+City/Twp/Box#: BORING
+County: Clackamas County
+
+Incident: Vegetation Fire
+Address: 12142 SE 282ND AV
+Unit: BR14, E14, BC4, BR19, E19
+Latlng: 45.4353390853,-122.3708220651
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: S.D. COUNTY
+County: San Diego County
+
+Incident: Traffic Collision
+Address: SR-54 WB
+Unit: NCE34, AM493, NCT34, B57
+Latlng: 32.6620080000,-117.0663210000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OH
+City/Twp/Box#: NORTH RANDALL
+County: Cuyahoga County
+
+Incident: Traffic Collision
+Address: 4771 NORTHFIELD RD
+Unit: 5304
+Latlng: 41.4281256000,-81.5250226000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: LIVE OAK
+County: Santa Cruz County
+
+Incident: Traffic Collision
+Address: 7TH AVE
+Unit: FCORD, E3415, T3472, B3403
+Latlng: 36.9853735646,-121.9898274775
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: SUMMERLAND
+County: Santa Barbara County
+
+Incident: Traffic Collision
+Address: HWY 101
+Unit: M25, E91, SQ91, B916, ME62
+Latlng: 34.4213640000,-119.6100870000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: CARLSBAD
+County: San Diego County
+
+Incident: Cliff Rescue
+Address: CARLSBAD BL
+Unit: 2375, 2214, 2313, 2211, 2291, 2204, 22R1, 2275, LGSTA
+Latlng: 33.1208110000,-117.3268380000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: rescue
+State: CA
+City/Twp/Box#: BREA
+County: Orange County
+
+Incident: Gas Main
+Address: 520 N TAMARACK AV
+Unit: BE1
+Latlng: 33.9266518520,-117.8995326288
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: OR
+City/Twp/Box#: BUXTON
+County: Washington County
+
+Incident: Hazardous Condition
+Address: NW HWY 47 & NW NOWAKOWSKI RD
+Unit: BE16, METWB, SFOR, MW42, BR13
+Latlng: 45.7228466956,-123.1996901558
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: hazmat
+State: SD
+City/Twp/Box#: DELL RAPIDS
+County: Minnehaha County
+
+Incident: Traffic Collision
+Address: 25065 475TH AVE
+Unit: TRAUMA 1, DRFD E2, A39, BAFD R, BAFD WL, DRR1, A17, BA, DRFD BASE, MNHA EMBASE, DR AMB1
+Latlng: 43.7518388195,-96.7113219035
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: SAN ANDREAS ARE
+County: Santa Cruz County
+
+Incident: Traffic Collision
+Address: SAN ANDREAS RD
+Unit: FCORD, B3503, E3512, E3513, R3560
+Latlng: 36.9179784923,-121.8340247842
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: SC
+City/Twp/Box#: ANDERSON, ANDERSON
+County: Anderson County
+
+Incident: Traffic Collision
+Address: WHITEHALL RD 
+Unit: B-42, SQ9, MEDIC-92, AMBULANCE-910
+Latlng: 34.5316864654,-82.6927677466
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: CA
+City/Twp/Box#: ANAHEIM
+County: Orange County
+
+Incident: Traffic Collision
+Address: 1126 W KATELLA AV
+Unit: AT3, AA3
+Latlng: 33.8031047598,-117.9252745689
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: NM
+City/Twp/Box#: ALBUQUERQUE
+County: Bernalillo County
+
+Incident: Structure Fire
+Address: 1123 CHIRICAHUA ST SE
+Unit: E8, E5, E9, L5, R8, S3, B2, B1
+Latlng: 35.0597790000,-106.5268310000
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: fire
+State: CA
+City/Twp/Box#: ALAMEDA
+County: Alameda County
+
+Incident: Traffic Collision
+Address: 9TH ST & LINCOLN AV
+Unit: E03, M02, T01, T02
+Latlng: 37.7750227500,-122.2704584722
+Date: none
+Primary Dispatcher #: Pulsepoint
+Description: traffic
+State: OH
+City/Twp/Box#: ROCKY RIVER
+County: Cuyahoga County
+
+Incident: none
+Address: 2752 PEASE DR
+Unit: RRE64
+Latlng: 41.4633390000,-81.8583790000
+Date: 06/25/2015
+Primary Dispatcher #: 
+Description: Carbon Monoxide
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M8
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M7
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: none
+County: Marion County
+
+Incident: none
+Address: ADDRESS NOT AVAILABLE
+Unit: M3
+Latlng: 0.0000000000,0.0000000000
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: MARION COUNTY
+County: Marion County
+
+Incident: none
+Address: 4049 SATTER DR NE
+Unit: FM31
+Latlng: 44.9806455937,-122.9825707059
+Date: 11/30/-000
+Primary Dispatcher #: 00219
+Description: Extinguished Fire
+Source: PULSEPOINT
+State: SC
+City/Twp/Box#: HONEA PATH
+County: Anderson County
+
+Incident: none
+Address: 204 MAIN ST
+Unit: HPFQ1, AMBULANCE-32
+Latlng: 34.4441110000,-82.3931620000
+Date: 11/30/-000
+Primary Dispatcher #: EMS1008
+Description: Fire Alarm
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M8
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M7
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M8
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M7
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: none
+County: Marion County
+
+Incident: none
+Address: ADDRESS NOT AVAILABLE
+Unit: M3
+Latlng: 0.0000000000,0.0000000000
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 2776 MILITIA WY SE
+Unit: E10
+Latlng: 44.9221392261,-123.0047646109
+Date: 06/25/2015
+Primary Dispatcher #: 00321
+Description: Fire Alarm
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1532 CENTER ST NE
+Unit: E1, L2
+Latlng: 44.9389353750,-123.0208646174
+Date: 06/25/2015
+Primary Dispatcher #: 00321
+Description: Odor Investigation
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: MARION COUNTY
+County: Marion County
+
+Incident: none
+Address: 4669 RIVERDALE RD S
+Unit: E4
+Latlng: 44.8885105470,-123.1246269675
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Fire Alarm
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 2100 TURNER RD SE
+Unit: E6
+Latlng: 44.9119603798,-122.9920391048
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Outside Fire
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M8
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M7
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M8
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M7
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: none
+County: Marion County
+
+Incident: none
+Address: ADDRESS NOT AVAILABLE
+Unit: M3
+Latlng: 0.0000000000,0.0000000000
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 2776 MILITIA WY SE
+Unit: E10
+Latlng: 44.9221392261,-123.0047646109
+Date: 06/25/2015
+Primary Dispatcher #: 00321
+Description: Fire Alarm
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1532 CENTER ST NE
+Unit: E1, L2
+Latlng: 44.9389353750,-123.0208646174
+Date: 06/25/2015
+Primary Dispatcher #: 00321
+Description: Odor Investigation
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: MARION COUNTY
+County: Marion County
+
+Incident: none
+Address: 4669 RIVERDALE RD S
+Unit: E4
+Latlng: 44.8885105470,-123.1246269675
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Fire Alarm
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 2100 TURNER RD SE
+Unit: E6
+Latlng: 44.9119603798,-122.9920391048
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Outside Fire
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 24TH PL NE
+Unit: E3
+Latlng: 44.9745716855,-122.9993214742
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Investigation
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 890 OAK ST SE
+Unit: M4
+Latlng: 44.9323795816,-123.0341797533
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 890 OAK ST SE
+Unit: M3
+Latlng: 44.9323795816,-123.0341797533
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 4405 COMMERCIAL ST SE
+Unit: FM7
+Latlng: 44.8900559575,-123.0350564722
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Extinguished Fire
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 4403 COMMERCIAL ST SE
+Unit: None
+Latlng: 44.8901291128,-123.0346440027
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Fire Alarm
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 4121 CHAMBERS AV S
+Unit: E4
+Latlng: 44.9033639989,-123.1153199809
+Date: 06/26/2015
+Primary Dispatcher #: 00321
+Description: Fire Alarm
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M5
+Latlng: 44.9572310279,-123.0336198493
+Date: 
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M7
+Latlng: 44.9572310279,-123.0336198493
+Date: 
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: MARION COUNTY
+County: Marion County
+
+Incident: none
+Address: 4049 SATTER DR NE
+Unit: FM31
+Latlng: 44.9806455937,-122.9825707059
+Date: 11/30/-000
+Primary Dispatcher #: 00219
+Description: Extinguished Fire
+Source: PULSEPOINT
+State: SC
+City/Twp/Box#: HONEA PATH
+County: Anderson County
+
+Incident: none
+Address: 204 MAIN ST
+Unit: HPFQ1, AMBULANCE-32
+Latlng: 34.4441110000,-82.3931620000
+Date: 11/30/-000
+Primary Dispatcher #: EMS1008
+Description: Fire Alarm
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M8
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M7
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: none
+County: Marion County
+
+Incident: none
+Address: ADDRESS NOT AVAILABLE
+Unit: M3
+Latlng: 0.0000000000,0.0000000000
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 2776 MILITIA WY SE
+Unit: E10
+Latlng: 44.9221392261,-123.0047646109
+Date: 06/25/2015
+Primary Dispatcher #: 00321
+Description: Fire Alarm
+Source: PULSEPOINT
+State: OH
+City/Twp/Box#: ROCKY RIVER
+County: Cuyahoga County
+
+Incident: none
+Address: WAGAR RD/LAKE RD
+Unit: RRE64
+Latlng: 41.4822368000,-81.8520318000
+Date: 06/27/2015
+Primary Dispatcher #: 18001
+Description: Investigation
+Source: PULSEPOINT
+State: OH
+City/Twp/Box#: ROCKY RIVER
+County: Cuyahoga County
+
+Incident: none
+Address: 21911 LAKE RD 
+Unit: None
+Latlng: 41.4807250000,-81.8616890000
+Date: 06/27/2015
+Primary Dispatcher #: 18001
+Description: Public Service
+Source: PULSEPOINT
+State: OH
+City/Twp/Box#: ROCKY RIVER
+County: Cuyahoga County
+
+Incident: none
+Address: 21911 LAKE RD
+Unit: RRM67
+Latlng: 41.4807250000,-81.8616890000
+Date: 06/27/2015
+Primary Dispatcher #: 18001
+Description: Public Service
+Source: PULSEPOINT
+State: OH
+City/Twp/Box#: WESTLAKE
+County: Cuyahoga County
+
+Incident: none
+Address: 2685 GLENMORE DR
+Unit: W2T72
+Latlng: 41.4490190000,-81.9287630000
+Date: 06/27/2015
+Primary Dispatcher #: 18001
+Description: Investigation
+Source: PULSEPOINT
+State: OH
+City/Twp/Box#: WESTLAKE
+County: Cuyahoga County
+
+Incident: none
+Address: CENTER RIDGE RD/BRADLEY RD
+Unit: W2T72
+Latlng: 41.4227389000,-81.9617845000
+Date: 06/27/2015
+Primary Dispatcher #: 18001
+Description: Pole Fire
+Source: PULSEPOINT
+State: OH
+City/Twp/Box#: ROCKY RIVER
+County: Cuyahoga County
+
+Incident: none
+Address: 19681 WESTOVER AVE
+Unit: RRE64
+Latlng: 41.4578570000,-81.8382300000
+Date: 06/27/2015
+Primary Dispatcher #: 18001
+Description: Flooding
+Source: PULSEPOINT
+State: OH
+City/Twp/Box#: WESTLAKE
+County: Cuyahoga County
+
+Incident: none
+Address: CENTER RIDGE RD/CANTERBURY
+Unit: W2E72
+Latlng: 41.4527400000,-81.9120920000
+Date: 06/27/2015
+Primary Dispatcher #: 18001
+Description: Odor Investigation
+Source: PULSEPOINT
+State: OH
+City/Twp/Box#: ROCKY RIVER
+County: Cuyahoga County
+
+Incident: none
+Address: 1740 SOUTH BEND DR 
+Unit: RRT66
+Latlng: 28.2047587000,-82.4488288000
+Date: 06/27/2015
+Primary Dispatcher #: 18001
+Description: Tree Down
+Source: PULSEPOINT
+State: OH
+City/Twp/Box#: BAY VILLAGE
+County: Cuyahoga County
+
+Incident: none
+Address: 31416 BEXLEY DR
+Unit: BVE14
+Latlng: 41.4916300000,-81.9669459000
+Date: 06/27/2015
+Primary Dispatcher #: 18001
+Description: Lockout
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M4
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M4
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: none
+County: Marion County
+
+Incident: none
+Address: ADDRESS NOT AVAILABLE
+Unit: M4
+Latlng: 0.0000000000,0.0000000000
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: none
+County: Marion County
+
+Incident: none
+Address: ADDRESS NOT AVAILABLE
+Unit: M2
+Latlng: 0.0000000000,0.0000000000
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: SALEM
+County: Marion County
+
+Incident: none
+Address: 1790 FRONT ST NE
+Unit: M3
+Latlng: 44.9572310279,-123.0336198493
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: none
+County: Marion County
+
+Incident: none
+Address: ADDRESS NOT AVAILABLE
+Unit: M8
+Latlng: 0.0000000000,0.0000000000
+Date: 11/30/-000
+Primary Dispatcher #: 00321
+Description: Interfacility Transfer
+Source: PULSEPOINT
+State: OR
+City/Twp/Box#: MARION COUNTY
+County: Marion County
+
+Incident: none
+Address: ALASKA ST SE
+Unit: E315
+Latlng: 44.9288282895,-122.8749625171
+Date: 11/30/-000
+Primary Dispatcher #: 00219
+Description: Investigation
+Source: PULSEPOINT

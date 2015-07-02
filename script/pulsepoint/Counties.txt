@@ -1,0 +1,127 @@
+32M01,Spokane County
+01008,Alameda County
+01005,Alameda County
+01007,Bernalillo County
+37005,San Diego County
+30005,Orange County
+EMS1008,Anderson County
+44005,Santa Cruz County
+09503,Jefferson County
+X1008,Minnehaha County
+00530,Washington County
+37010,San Diego County
+44020,Santa Cruz County
+30010,Orange County
+00042,Clackamas County
+37025,San Diego County
+42005,Santa Barbara County
+44065,Santa Cruz County
+EMS1034,Cuyahoga County
+37030,San Diego County
+00057,Clackamas County
+EMS1020,Clark County
+EMS1035,Cuyahoga County
+25009,Franklin County
+07090,Contra Costa County
+00740,Washington County
+07030,Contra Costa County
+00086,Polk County
+13030,Dane County
+57760,Yolo County
+37050,San Diego County
+07015,Contra Costa County
+37065,San Diego County
+59316,Kenton County
+00109,Clackamas County
+09109,Cass County
+01200,Washington County
+30025,Orange County
+01040,Alameda County
+30030,Orange County
+30035,Orange County
+43010,Douglas County
+00132,Clackamas County
+03006,Brown County
+01045,Alameda County
+37084,San Diego County
+00161,Washington County
+35010,San Benito County
+00163,Clackamas County
+30040,Orange County
+00186,Marion County
+10100,Frontenac County
+37090,San Diego County
+03002,Clark County
+01065,Alameda County
+19100,Los Angeles County
+LAC01,Los Angeles County
+LAC02,Los Angeles County
+19110,Los Angeles County
+LAC04,Los Angeles County
+LAC05,Los Angeles County
+LAC06,Los Angeles County
+LAC07,Los Angeles County
+LAC08,Los Angeles County
+LAC09,Los Angeles County
+LAFDC,Los Angeles County
+LAFDS,Los Angeles County
+19105,Los Angeles County
+LAFDW,Los Angeles County
+13010,Dane County
+00219,Marion County
+43030,Santa Clara County
+00233,Clackamas County
+14307,Clay County
+07060,Contra Costa County
+43040,Santa Clara County
+43050,Santa Clara County
+37110,San Diego County
+30055,Orange County
+37075,San Diego County
+18075,Cuyahoga County
+37115,San Diego County
+30060,Orange County
+07212,Orange County
+43060,Santa Clara County
+07075,Contra Costa County
+CN713,Collin County
+06960,Larimer County
+37135,San Diego County
+37219,San Diego County
+07100,Contra Costa County
+04600,Benton County
+00321,Marion County
+37140,San Diego County
+43070,Santa Clara County
+37145,San Diego County
+07035,Contra Costa County
+00323,Clackamas County
+42035,Santa Barbara County
+43080,Santa Clara County
+43090,Santa Clara County
+44555,Santa Cruz County
+44055,Santa Cruz County
+37150,San Diego County
+44070,Santa Cruz County
+01101,Minnehaha County
+37160,San Diego County
+43045,Santa Clara County
+32D03,Spokane County
+32D04,Spokane County
+32D08,Spokane County
+32D09,Spokane County
+32M10,Spokane County
+32D01,Spokane County
+00087,Polk County
+00485,Washington County
+11165,Pima County
+37235,San Diego County
+37170,San Diego County
+00402,Washington County
+44080,Santa Cruz County
+18001,Cuyahoga County
+44040,Santa Cruz County
+03101,Brown County
+37045,San Diego County
+44035,Santa Cruz County
+42010,Santa Barbara County
