@@ -5,7 +5,7 @@
  * Date: 6/16/2015
  * Time: 10:42 AM
  */
-include("script\\lib\\DOM\\simple_html_dom.php");
+include("script/lib/DOM/simple_html_dom.php");
 
 
 class GetAgencies {
@@ -25,35 +25,38 @@ class GetAgencies {
         {
             $firstBracketPos = strpos($e->innertext,'[');
             $temp = substr($e->innertext,$firstBracketPos+1,$firstBracketPos+3);
-            //echo $temp;
-            $temp = substr($temp, 0, 2);
+            $state = substr($temp, 0, 2);
 
 
             //push individual values on
-            array_push($this->states, $temp);
+            array_push($this->states, $state);
             array_push($this->numbers, $e -> value);
             //array_push($this->names, substr($e->innertext,0,$firstBracketPos-1));
 
             $agencyid = $e -> value;
-            $path = "data\\$agencyid.txt";
+            $path = "data/ppt-$agencyid-$state.txt";
 
-            if (!file_exists("data\\$temp.txt"))
+            //if (!file_exists("data/$state.txt"))
+            if (!file_exists($path))
             {
                 $myfile = fopen($path, "a+") or die("Unable to open file!");
                 $temp2 = substr($e->innertext,0,$firstBracketPos-1);
-                $txt = "$temp2 Unix: 0";
+                $txt = "$temp2 Epoch: 0\n";
                 fwrite($myfile, $txt);
             }
             else
             {
                 $myfile = fopen($path, "a+") or die("Unable to open file!");
             }
+
             $descs[$agencyid]= $myfile;
-            /*if($descs[$agencyid]==null)
+            /* 
+	    if($descs[$agencyid]==null)
             {
                 echo "BROKEN";
                 die;
-            }*/
+            }
+	    */
         }
         $this->descriptors = $descs;
     }

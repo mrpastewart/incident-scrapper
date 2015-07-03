@@ -7,95 +7,101 @@
  */
 
 
-
 //Importing classes
-include "script\\pulsepoint\\AgencyFiles.php";
-include "script\\pulsepoint\\GetAgencies.php";
-include "script\\pulsepoint\\getIncidents.php";
-include "script\\pulsepoint\\EmailSender.php";
 //include "IncidentAppend.php";
-$init = time();
+include "script/pulsepoint/AgencyFiles.php";
+include "script/pulsepoint/GetAgencies.php";
+include "script/pulsepoint/getIncidents.php";
+include "script/pulsepoint/EmailSender.php";
+
+
+/*
+ * setup timezone so we don't get errors
+ */
+if( ! ini_get('date.timezone') )
+{
+    date_default_timezone_set('GMT');
+}
+
+$start_time = time();
+
+/*
+ * read in county mapping
+ */
 $Counties = array();
-$handle = fopen("script\\pulsepoint\\Counties.txt", "a+");
-fseek($handle, 0);
-if ($handle) {
-    while (($buffer = fgets($handle)) !== false)
+$county_fd = fopen("data/COUNTIES-ppt.txt", "a+");
+fseek($county_fd, 0);
+if ($county_fd) {
+    while (($buffer = fgets($county_fd)) !== false)
     {
         $temp = explode(",", $buffer);
         $Counties[$temp[0]] = $temp[1];
     }
-    if (!feof($handle)) {
+    if (!feof($county_fd)) {
         echo "Error: unexpected fgets() fail\n";
     }
 }
+fclose($county_fd);
 
-fclose($handle);
-//Get agency list
+
+/* DELETE
+	//Get agency list
+	//$agencies = $GA->getList();
+
+	//Create agency Files
+	//$AF = new AgencyFiles($agencies);
+	//$AF->agencyCreation();
+
+	//Create local arrays of agency names and numbers
+	//$agencynames = $AF->getNames();
+	//$descriptors["counties"] = $handle;
+*/
+
 $GA = new GetAgencies();
-//$agencies = $GA->getList();
-
-
-//Create agency Files
-//$AF = new AgencyFiles($agencies);
-//$AF->agencyCreation();
-
-
-
-//Create local arrays of agency names and numbers
-//$agencynames = $AF->getNames();
 $agencynumbers =  $GA->getNums();
 $agencystates = $GA->getStates();
 $descriptors = $GA->getDescriptors();
-
-//$descriptors["counties"] = $handle;
-
-
-
-
+//var_dump($agencynumbers);
 
 //Compile list of every recent incident from pulsepoint
-
-
 $GI = new getIncidents($agencynumbers, $agencystates, $Counties, $descriptors);
 $Incidents = $GI->getIncidents();
+//var_dump($Incidents);
 
 
+/* DELETE
+	//Create local arrays for guts of email
+	$Description = $GI->getDescription();
+	$Units = $GI->getUnits();
+	$Addresses = $GI->getAddress();
+	$IncidentNumber = $GI->getNumber();
+	$StateList = $GI->getStates();
+	$Locations = $GI->getGeo();
+	$Times = $GI->getTimes();
+	$Dates = $GI->getDates();
+	$Unix = $GI ->getUnix();
 
-//Create local arrays for guts of email
-/*$Description = $GI->getDescription();
-$Units = $GI->getUnits();
-$Addresses = $GI->getAddress();
-$IncidentNumber = $GI->getNumber();
-$StateList = $GI->getStates();
-$Locations = $GI->getGeo();
-$Times = $GI->getTimes();*/
+	for($i = 0; $i < sizeof($IncidentNumber); $i++)
+	{
+	    echo $IncidentNumber[$i] . " " . $Incidents[$i];
+	}
 
+	foreach($StateList as $str)
+	{
+	    echo $str;
+	    echo "\n";
+	}
+	//$ES->sendEmail();
+	//$ES = new EmailSender($IncidentNumber, $Description, $Addresses, $Units, $Incidents, $StateList, $Times, $Locations, $Counties, $Dates. $Unix);
 
-$Counties = $GI->getCounties();
-
-
-
-/*$Dates = $GI->getDates();
-$Unix = $GI ->getUnix();*/
-
-/*for($i = 0;$i < sizeof($IncidentNumber);$i++)
-{
-    echo $IncidentNumber[$i] . " " . $Incidents[$i];
-}*/
-
-/*foreach($StateList as $str)
-{
-    echo $str;
-    echo "\n";
-}*/
-
-//$ES = new EmailSender($IncidentNumber, $Description, $Addresses, $Units, $Incidents, $StateList, $Times, $Locations, $Counties, $Dates. $Unix);
-
+	$Counties = $GI->getCounties();
+*/
 
 
 $ES = new EmailSender($Incidents, $descriptors);
 
-$programtime = time()-$init;
-echo $programtime;
-//$ES->sendEmail();
+$program_time = time()-$start_time;
+echo "       Total Run Time: $program_time seconds\n";
+
+
 ?>
