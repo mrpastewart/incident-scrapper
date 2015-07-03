@@ -16,19 +16,17 @@ class getIncidents {
         $this->Counties=$county;
         //$this->Descriptors = $descs;
 
-
         $i = 0;
         $current = "none";
         foreach($agencies as $agencynumber)
         {
-            $previous = $current;
             //echo "Should have created all the files and written the agency name in it!\n";
-
             //Appends incidents to proper agency file
 
-
+            $previous = $current;
             $agency = $agencynumber;
-            //echo "agency: $agency\n";
+            echo "************** AGENCY: $agency\n";
+
             $current = $agency;
             $recent_url = "http://webapp.pulsepoint.org/recent_incidents.php?agencyid=$agency";
             $active_url = "http://webapp.pulsepoint.org/active_incidents.php?agencyid=$agency";
@@ -89,8 +87,6 @@ class getIncidents {
 
                     continue;
                 }
-
-
 
 
                 if (preg_match("/<cell>/", $line) && $ctr == 2) {
@@ -157,24 +153,24 @@ class getIncidents {
                     continue;
                 }
                 $checker = new IncidentAppend();
-                //echo "unixValue: $unixValue\n";
-                if(!($checker->checkrep($descs[$agency], intval($unixValue), $agency)))
+                if(!($checker->checkrep($descs[$agency], intval($unixValue), $agency, $description)))
                 {
                     continue;
                 }
 
-                /*$temp = explode("/", $date);
-                $month = (int) $temp[0];
-                $month = mts($month);
-                $day = (int) $temp[1];
-                $year = (int) substr(0, 4, $temp[2]);
-                $year = $year - 2015;
-                $temp = explode(":", substr(5, 12));
-                $hour = (int) $temp[0];
-                $minutes = (int) $temp[1];
-                $second = (int) $temp[2];
-                $unix = 31536000 * $year + $month + $day * 86400 + $hour * 3600 + 60 * $minutes + $second;*/
-
+                /* DELETE
+			$temp = explode("/", $date);
+			$month = (int) $temp[0];
+			$month = mts($month);
+			$day = (int) $temp[1];
+			$year = (int) substr(0, 4, $temp[2]);
+			$year = $year - 2015;
+			$temp = explode(":", substr(5, 12));
+			$hour = (int) $temp[0];
+			$minutes = (int) $temp[1];
+			$second = (int) $temp[2];
+			$unix = 31536000 * $year + $month + $day * 86400 + $hour * 3600 + 60 * $minutes + $second;
+		*/
 
 
 
@@ -188,12 +184,13 @@ class getIncidents {
 
 
 
+		/*
+		 * geocode county if already not in cache
+		 */
                 if (array_key_exists($agency, $this->Counties))
                 {
                     $cou = $this->Counties[$agency];
-                }
-                else
-                {
+                } else {
                     $temp = $latlng;
 
                     //$temp = explode(",", $this->Geo[$i]);
@@ -213,7 +210,7 @@ class getIncidents {
                             $this->Counties[$agency] = $new;
                             //array_push($this->Counties, $this->Nums[$i]->$new);
                             $cou = $new;
-                            $txt = fopen("Counties.txt", "a");
+                            $txt = fopen("data/COUNTIES-ppt.txt", "a");
                             $str = "$agency,$cou\n";
                             fwrite($txt, $str);
                             fclose($txt);
@@ -229,24 +226,28 @@ class getIncidents {
                 }
 
 
-                /*State:     PA
-                City/Twp/Box#:  Hershey
-                County:    Erie   <<< MANUALLY ADD COUNTY
-                Incident:   crime   <<< STANDARDIZED CATEGORY
-                Address:    902 E 5TH
-                Unit:   Unit A, Unit B, Unit C
-                latlng:   LAT,LONG
-                Date:   fri, 06, 2015 11:35:30 -0800 (time zone)
-                Primary Dispatcher #:   <Agency name>
-                Description:    Strike Team   <<< MOVE ORIGINAL TYPE HERE
-                Source: PULSEPOINT  <<< HARDCODE THE SOURCE
-                Logo: http://webapp.pulsepoint.org/logo-agencyid.php?agencyid=01008*/
+                /* DELETE
+			State:     PA
+			City/Twp/Box#:  Hershey
+			County:    Erie   <<< MANUALLY ADD COUNTY
+			Incident:   crime   <<< STANDARDIZED CATEGORY
+			Address:    902 E 5TH
+			Unit:   Unit A, Unit B, Unit C
+			latlng:   LAT,LONG
+			Date:   fri, 06, 2015 11:35:30 -0800 (time zone)
+			Primary Dispatcher #:   <Agency name>
+			Description:    Strike Team   <<< MOVE ORIGINAL TYPE HERE
+			Source: PULSEPOINT  <<< HARDCODE THE SOURCE
+			Logo: http://webapp.pulsepoint.org/logo-agencyid.php?agencyid=01008
+		*/
 
 
                 //array_push($this->City, $split[1]);
                 //array_push($this->Address, $split[0]);
 
-                $str = "description: $description\taddress: $address\tunits: $units\tUnix: $unixValue\n";
+                $str = "description: $description\taddress: $address\tunits: $units\tEpoch: $unixValue\n";
+
+	        echo "      ".$description."  => ".$this->standardize($description)."\n";
 
                 $arr = array(
                     "State"=>$states[$i],
@@ -262,7 +263,7 @@ class getIncidents {
                     "Source"=>"PULSEPOINT",
                     "Logo"=> "NONE - HAVE TO ADD LATER",
                     "Timestamp"=>$timeStamp,
-                    "Unix Value"=>$unixValue,
+                    "Epoch"=>$unixValue,
                     "General"=>$str,
                     "Number"=>$agency
                 );
@@ -271,17 +272,25 @@ class getIncidents {
 
                 // Check for repetition and append
 
+		/* DELETE
+			//fopen("$agency.txt", "a");
+			//echo "parsed: \n";
+			//echo "\tdescription: $description\n";
+			//echo "\taddress: $address\n";
+			//echo "\tunits: $units\n<";
+		*/
 
-                //fopen("$agency.txt", "a");
-                //echo "parsed: \n";
-                //echo "\tdescription: $description\n";
-                //echo "\taddress: $address\n";
-                //echo "\tunits: $units\n<";
+                echo "\t$timeStamp: $description\t $address, $city\n";
+
             }
             $i++;
+
+	    //sleep(5);		// delay after each agency fetch so not to flood the site
+
         }
 
     }
+
     private function filters($des)
     {
         $validIncidents = array (
@@ -307,8 +316,11 @@ class getIncidents {
             "Hazmat Response" => true,
             "Multi Casualty" => true,
             "Flood Warning" => true,
+            "Flooding" => true,
             "Tornado Warning" => true,
+            "Tornado" => true,
             "Tsunami Warning" => true,
+            "Tsunami" => true,
             "Rescue" => true,
             "Cliff Rescue" => true,
             "Confined Space" => true,
@@ -322,11 +334,15 @@ class getIncidents {
             "Wires Arcing" => true,
             "Wires Down" => true,
         );
+
         //$temp = $validIncidents[$des];
-        if(array_key_exists($des, $validIncidents))
+        if(array_key_exists($des, $validIncidents)) {
             return true;
+	}
+
         return false;
     }
+
     private function standardize($str)
     {
         $stan = array(
@@ -352,8 +368,11 @@ class getIncidents {
             "Hazmat Response" => "hazmat",
             "Multi Casualty" => "ems",
             "Flood Warning" => "weather",
+            "Flooding" => "weather",
             "Tornado Warning" => "weather",
             "Tsunami Warning" => "weather",
+            "Tornado" => "weather",
+            "Tsunami" => "weather",
             "Rescue" => "rescue",
             "Cliff Rescue" => "rescue",
             "Confined Space" => "rescue",
@@ -370,7 +389,9 @@ class getIncidents {
             return $stan[$str];
         return "none";
     }
-    /*public function mts($i)
+
+    /*
+    public function mts($i)
     {
         if($i = 1)
             return 0;
@@ -397,11 +418,14 @@ class getIncidents {
         if($i = 12)
             return (6*31 + 28 +4*30)* 86400;
 
-    }*/
+    }
+    */
+
     public function getIncidents()
     {
         return $this->Incidents;
     }
+
     public function getCounties()
     {
         return $this->Counties;

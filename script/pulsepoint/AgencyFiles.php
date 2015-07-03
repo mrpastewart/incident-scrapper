@@ -8,15 +8,11 @@
 class AgencyFiles
 {
 
-
     private    $agencynames = array();
     private    $agencynumber = array();
     private    $agencystate = array();
 
-
-
     //constructor
-
     public function __construct(/*array*/ $agencies) {
         for($i = 1; $i < sizeOf($agencies); $i++)
         {
@@ -40,19 +36,16 @@ class AgencyFiles
     public function agencyCreation()
     {
         for($i = 0;$i < sizeof($this->agencynumber);$i++) {
-            /*echo $agencynames[$i];
-            echo " ";
-            echo $agencynumber[$i];
-            echo "\n";*/
-
+	    $path = "data/ppt-$temp1-$temp3.txt";
 
             //Create a file for each agency, each file name is based on agency number
             $temp = $this->agencynumber[$i];
-            if (!file_exists("$temp.txt")) {
+            if (!file_exists($path)) {
                 $temp1 = $this->agencynumber[$i];
                 $temp2 = $this->agencynames[$i];
-                $myfile = fopen("$temp1.txt", "w") or die("Unable to open file!");
-                $txt = "$temp2 Unix: 0\n";
+                $temp3 = $this->agencystate[$i];
+                $myfile = fopen($path, "w") or die("Unable to open file!");
+                $txt = "$temp2 Epoch: 0\n";
                 fwrite($myfile, $txt);
                 //fclose($myfile);
             }

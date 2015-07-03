@@ -11,10 +11,17 @@
 //Importing classes
 //include "AgencyFiles.php";
 //include "GetAgencies.php";
+//include "IncidentAppend.php";
 include "getIncidents.php";
 include "EmailSender.php";
-//include "IncidentAppend.php";
 
+/*
+ * setup timezone so we don't get errors
+ */
+if( ! ini_get('date.timezone') )
+{
+    date_default_timezone_set('GMT');
+}
 
 /*
 //Get agency list
