@@ -1,3 +1,0 @@
-Anderson County 911 Unix: 0Anderson County 911 Unix: 0description: Fire Alarm	address: 204 MAIN ST	units: HPFQ1, AMBULANCE-32	Unix: 1435269600
-Anderson County 911 Unix: 0Anderson County 911 Unix: 0Anderson County 911 Unix: 0Anderson County 911 Unix: 0Anderson County 911 Unix: 0description: Fire Alarm	address: 204 MAIN ST	units: HPFQ1, AMBULANCE-32	Unix: 1435269600
-Anderson County 911 Unix: 0

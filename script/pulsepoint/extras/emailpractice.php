@@ -18,7 +18,8 @@ $mail->SetFrom('lucas211w@gmail.com', 'Lucas Wang');
 $mail->AddReplyTo("lucas211w@gmail.com","Lucas Wang");
 $mail->Subject    = "PHPMailer Test Subject via smtp (Gmail), basic";
 $mail->msgHTML($body);
-$address = "pap13p@gmail.com";
+//$address = "pap13p@gmail.com";
+$address = "georooArchive@gmail.com";
 $mail->AddAddress($address, "Srivatsav Pyda");
 
 if(!$mail->Send()) {
