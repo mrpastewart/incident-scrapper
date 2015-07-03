@@ -8,13 +8,13 @@
 //NO TIMESTAMP, ASSIGNING IT OUR TIME
 
 $curlWorking = true;
+$parseWorking = true;		// TODO: KLUDGE
 $state = "OR";
 $incidentList = [];
 
 $table = "clackamas_county";
 $url = "http://www.cad.oregon911.net/call-list?AJAX_REFRESH=C";
 $email_url = "http://www.cad.oregon911.net/call-list";
-$agency_name = "Clackamas County, Oregon";
 
 
 //
@@ -99,12 +99,18 @@ foreach ($lines as $line) {
     else
         $standardIncident = "unknown";
 
+    $timestamp = "$year-$month-$day $hour:$minute:00";
+    $date = "$year-$month-$day";
+    $hrMinSec = "$hour:$minute";
+    $unixValue = strtotime($date) + strtotime($hrMinSec);
+    $timestamp = date("l, F d, Y", strtotime($date));
+    $timestamp = "$timestamp $hrMinSec -0800";
 
     if ($description != '' && $address != '')
         $incident = [
             "State" => $state,
             "City" => "none",
-            "County" => "Butler County",
+            "County" => "Butler",
             "Incident" => $standardIncident,
             "Description" => $description,
             "Unit" => $units,
@@ -114,14 +120,15 @@ foreach ($lines as $line) {
             "Logo" => "none",
             "Address" => $address,
             "Timestamp" => "none",
-            "Unix Value" => "none",
+            "Epoch" => $unixValue
         ];
     array_push($incidentList,$incident);
 }
 $generalInfo = [
     "curlWorking" => $curlWorking,
-    "agencyName" => "clackamas"
+    "parseWorking" => $parseWorking,
+    "agencyName" => "clackamas-OR"
 ];
-var_dump($incidentList);
+//var_dump($incidentList);
 
 ?>

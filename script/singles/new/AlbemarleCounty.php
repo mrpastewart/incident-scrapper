@@ -7,14 +7,26 @@
  */
 
 //Script return values
-    $curlWorking = true;
-    $state = "VA";
-    $incidentList = [];
+$curlWorking = true;
+$parseWorking = true;
+$incidentList = [];
+
+/*
+$city = null;
+$description = null;
+$unit = null;
+$url = null;
+$address = null;
+$timestamp = null;
+$unixValue = null;
+*/
+
 
 //
 //	Initialize curl
 //
-$url = "http://warhammer.mcc.virginia.edu/fids/fids.php?display=PLAIN";
+//$url = "http://warhammer.mcc.virginia.edu/fids/fids.php?display=PLAIN";
+$url = "http://warhammer.mcc.virginia.edu/fids/fids.php?station=1";	// TEST ONLY!
 
 $ch = curl_init();
 
@@ -47,7 +59,12 @@ $page = preg_replace("@Any number in.*@", "", $page);
 
 $lines = explode("\n", $page);
 
+
+$last_incident = "none";
+$found_table = false;
 foreach ($lines as $line) {
+
+
     if (preg_match("@<tr>@", $line)) {
         $ctr = 1;
         continue;
@@ -67,24 +84,90 @@ foreach ($lines as $line) {
 
     if (preg_match("@<td align=@", $line) && $ctr == 2) {
         $ctr++;
+        $line = preg_replace("@<br.*@", "", $line);
+        $line = preg_replace("@</font.*@", "", $line);
+
+	//echo("          line=$line\n");
+        $incident_numb = preg_replace("@.*<b>@", "", $line);
+
+	/*
+	 * save only if previous incident# chgs
+	 * otherwise aggregate the "unit"
+	 */
+	if (($last_incident != "none") && ($incident_numb != $last_incident) && 
+	    ($description != '') && ($address != '')) {
+
+	    $incident = [
+		"State" => "VA",
+		"City" => $city,
+		"County" => "Albemarle",
+		"Incident" => $standardIncident,
+		"Description" => $description,
+		"Unit" => $unit,
+		"latlng" => "none",
+		"Primary Dispatcher #" => "Albemarle FD",
+		"Source" => $url,
+		"Logo" => "http://warhammer.mcc.virginia.edu/fids/images/coaseal2.gif",
+		"Address" => $address,
+		"Timestamp" => $timestamp,
+		"Epoch" => $unixValue,
+	    ];
+
+	    array_push($incidentList,$incident);
+	    $unit = "";
+	    //var_dump($incident);
+	}
+
+	$last_incident = $incident_numb;
+
         continue;
     }
 
     if (preg_match("@<td align=@", $line) && $ctr == 3) {
         $ctr++;
+        $line = preg_replace("@</a.*@", "", $line);
+        $line = preg_replace("@</font.*@", "", $line);
+        $new_unit = preg_replace("@.*=new>@", "", $line);
+
+	if(strlen($unit) > 0) {
+	    $unit .= ",".$new_unit;
+	} else {
+	    $unit = $new_unit;
+	}
+
+	//echo("        incident=$incident_numb   unit=$unit\n");
         continue;
     }
 
     if (preg_match("@<td align=@", $line) && $ctr == 4) {
         $ctr++;
         $line = preg_replace("@</font.*@", "", $line);
+
+	/*
+	 * extract city from gmap link
+	 */
+        $line = preg_replace("@.*daddr=@", "", $line);
+	$fields = split("&", $line);		// take first param
         $address = preg_replace("@.*=new>@", "", $line);
+
+	$addr1 = split("\+", $fields[0]);	// address in gmap link
+	$addr2 = split(" ", $address);		// address displayed
+	$city = "";
+	for ($i = 0; $i < sizeof($addr1)-1; $i++) {
+	    if ($addr1[$i] != $addr2[$i]) {
+		$city .= $addr1[$i]." ";
+	    }
+	}
+	$city = trim($city, " ");	// get rid of trailing spaces
+	//echo ("       CITY=".$city."/n");
+
         continue;
     }
 
     if (preg_match("@<td bgcolor@", $line) && $ctr == 5) {
         $ctr++;
         $line = preg_replace("@</font.*@", "", $line);
+        //$description = preg_replace("@.*>@", "", $line);
         $description = preg_replace("@.*>@", "", $line);
         continue;
     }
@@ -102,6 +185,7 @@ foreach ($lines as $line) {
 
     $ctr = 8;
 
+
     $line = html_entity_decode($line);
     $line = preg_replace("@ +@", " ", $line);
 
@@ -115,40 +199,49 @@ foreach ($lines as $line) {
     $timestamp = date("l, F d, Y", strtotime($date));
     $timestamp = "$timestamp $hrMinSec -0800";
 
-//
-//Filter for standardizing descriptions
-//
+    //
+    //Filter for standardizing descriptions
+    //
     $stan = array(
         //List of knowns
-);
+    );
+
     if(array_key_exists($description, $stan))
         $standardIncident =  $stan[$description];
     else
         $standardIncident = "unknown";
 
-    if ($description != '' && $address != '')
-        $incident = [
-            "State" => $state,
-            "City" => "none",
-            "County" => "Albemarle County",
-            "Incident" => $standardIncident,
-            "Description" => $description,
-            "Unit" => "none",
-            "latlng" => "none",
-            "Primary Dispatcher #" => "Fire Incident Display System",
-            "Source" => "http://warhammer.mcc.virginia.edu/fids/fids.php?display=PLAIN",
-            "Logo" => "http://warhammer.mcc.virginia.edu/fids/images/coaseal2.gif",
-            "Address" => $address,
-            "Timestamp" => $timestamp,
-            "Unix Value" => $unixValue,
-        ];
-    array_push($incidentList,$incident);
+    echo "        $timestamp:  $description   $address\n";
 }
+
+$incident = [
+    "State" => "VA",
+    "City" => $city,
+    "County" => "Albemarle",
+    "Incident" => $standardIncident,
+    "Description" => $description,
+    "Unit" => $unit,
+    "latlng" => "none",
+    "Primary Dispatcher #" => "Albemarle FD",
+    "Source" => $url,
+    "Logo" => "http://warhammer.mcc.virginia.edu/fids/images/coaseal2.gif",
+    "Address" => $address,
+    "Timestamp" => $timestamp,
+    "Epoch" => $unixValue,
+];
+
+array_push($incidentList,$incident);
+//var_dump($incident);
+
 $generalInfo = [
     "curlWorking" => $curlWorking,
-    "agencyName" => "albemarle_county"
+    "parseWorking" => $parseWorking,
+    "agencyName" => "albemarle-VA"
 ];
 array_push($incidentList,$generalInfo);
 
-var_dump($incidentList);
+//var_dump($incidentList);
+
+
+
 ?>

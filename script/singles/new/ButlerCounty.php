@@ -122,7 +122,7 @@
                 $incident = [
                     "State" => $state,
                     "City" => $community,
-                    "County" => "Butler County",
+                    "County" => "Butler",
                     "Incident" => $standardIncident,
                     "Description" => $description,
                     "Unit" => "none",
@@ -132,20 +132,22 @@
                     "Logo" => "http://ems.co.butler.pa.us/publicwebcad/Images/PublicWebCADLogo.gif",
                     "Address" => $address,
                     "Timestamp" => $timestamp,
-                    "Unix Value" => $unixValue,
+                    "Epoch" => $unixValue,
                 ];
             array_push($incidentList,$incident);
+
+	    echo "        $timestamp:  $description  $address\n";
         }
         //return statements
     $generalInfo = [
         "curlWorking" => $curlWorking,
         "parseWorking" => $parseWorking,
-        "agencyName" => "butler_county"
+        "agencyName" => "butler-PA"
     ];
 array_push($incidentList,$generalInfo);
 
 if(!$inTable)
             $parseWorking = false;
-        var_dump($incidentList);
+        //var_dump($incidentList);
 
         ?>

@@ -8,6 +8,10 @@
 
 $url = "http://www.ci.austin.tx.us/fact/default.cfm";
 $agency_name = "Austin, Texas";
+$curlWorking = true;
+$parseWorking = true;
+$incidentList = [];
+$state = "TX";
 
 
 //
@@ -43,11 +47,16 @@ $page = preg_replace("@.*down_arrow.jpg@", "", $page);
 
 $lines = explode("\n", $page);
 $ctr=0;
+//var_dump($lines);
 foreach ($lines as $line) {
     if (preg_match("@<TR BGCOLOR@", $line)) {
         $ctr = 1;
         continue;
     }
+
+if($ctr > 0 && $ctr < 8) {
+//	echo("     ".$ctr.":   ".$line."\n");
+}
 
     if (preg_match("@<font face=.arial. size=.1.>@", $line) && $ctr == 1) {
         $ctr++;
@@ -166,24 +175,26 @@ foreach ($lines as $line) {
 
 
     $incident = [
-        "State" => "none",
+        "State" => "TX",
         "City" => "Austin",
-        "County" => "Travis County",
+        "County" => "Travis",
         "Incident" => $standardIncident,
         "Description" => $description,
         "Unit" => "none",
         "latlng" => "none",
-        "Primary Dispatcher #" => "Fire Incidents In Travis County",
+        "Primary Dispatcher #" => "Travis County FD",
         "Source" => "http://www.ci.austin.tx.us/fact/default.cfm?sort=10",
         "Logo" => "https://pbs.twimg.com/profile_images/3158256826/f9f34aa109a26aa107a2a9edb85a201b_normal.jpeg",
         "Address" => $address,
         "Timestamp" => $timestamp,
-        "Unix Value" => $unixValue,
+        "Epoch" => $unixValue,
     ];
 
+    array_push($incidentList,$incident);
 
+    echo "       $timestamp:  $description  $address\n";
 
-
+/*
     echo "parsed: \n";
     echo "\tdate: $date\n";
     echo "\ttime: $time\n";
@@ -191,4 +202,16 @@ foreach ($lines as $line) {
     echo "\taddress: $address\n";
     echo "\tdescription: $description\n";
     echo "\tagency: $agency\n";
+*/
 }
+
+$generalInfo = [
+    "curlWorking" => $curlWorking,
+    "parseWorking" => $parseWorking,
+    "agencyName" => "austin-TX"
+];
+
+array_push($incidentList,$generalInfo);
+//var_dump($incidentList);
+
+?>
