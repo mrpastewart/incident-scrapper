@@ -7,54 +7,57 @@
  */
 class repetitionChecker
 {
-    //private $incident = array();
     private $file;
     private $filename;
+    //private $incident = array();
     //private $timestamp;
 
 
     public function __construct($fd, $name)
     {
-        //$this->incidents = $incs;
         $this->file = $fd;
         $this->filename = $name;
+        //$this->incidents = $incs;
         //$this->timestamp = $num;
     }
+
+
     public function checkrep($incident)
     {
-        $time = $incident["Unix Value"];
-        $temp1 = $incident["Description"];
-        $str = "Description: $temp1\tUnix: $time\n";
-        $size = filesize("data\\$this->filename.txt");
-        //echo $size;
+        $time = $incident["Epoch"];
+        $desc = $incident["Description"];
+        $str = "Description: $desc\tEpoch: $time\n";
+
+        $size = filesize("./data/".$this->filename.".txt");
+        //echo "       checkrep(): file=./data/".$this->filename.".txt   size=$size    ";
         if($size >500)
             fseek($this->file, $size-500);
         else
             fseek($this->file, 0);
+
         $line = "";
         while (($buffer = fgets($this->file)) !== false)
         {
             $line = $buffer;
-            //echo "$buffer\n";
         }
+	$line = str_replace("\r", "", $line);	// strip away all possible line breaks
+	$line = str_replace("\n", "", $line);
+
+    	//echo "      desc=".$desc."*   filename=".$this->filename."*\n";
         if($line == $this->filename) {
-            echo "here";
+            echo "writing: ".$str;
             fwrite($this->file, $str);
             return true;
         }
         else {
-            $end = explode("Unix: ", $line);
-            if ($end[1] == "0") {
+            $end = explode("Epoch: ", $line);
+            $epoch = $end[1];
+            //echo "previous time = ".$epoch."    current_time = ". $time."\n";
+
+            if (($epoch == "0") || ($time > $epoch)) {
+                fwrite($this->file, $str);
                 return true;
             }
-            $temp = $end[1];
-            echo "previous time = ".$temp."\ncurrent time = ". $time;
-            if ($time > $temp) {
-                //fwrite($this->file, $str);
-                //echo "here";
-                return true;
-            }
-            //echo "here";
             return false;
         }
     }

@@ -7,11 +7,24 @@
  */
 //include("script\\pulsepoint\\IncidentAppend");
 //include("script\\pulsepoint\\EmailSender");
-include("script\\common\\repetitionChecker.php");
 //include "script\\pulsepoint\\IncidentAppend.php";
-require "script\\lib\\PHPMailer\\PHPMailerAutoload.php";
 
-$dir = new DirectoryIterator("script\\singles\\new");
+//include(".\\script\\common\\repetitionChecker.php");
+//require ".\\script\\lib\\PHPMailer\\PHPMailerAutoload.php";
+//$dir = new DirectoryIterator(".\\script\\singles\\new");
+
+include(realpath("./script/common/repetitionChecker.php"));
+require realpath("./script/lib/PHPMailer/PHPMailerAutoload.php");
+$dir = new DirectoryIterator(realpath("./script/singles/new"));
+
+/*
+ * setup timezone so we don't get errors
+ */
+if( ! ini_get('date.timezone') )
+{
+    date_default_timezone_set('GMT');
+}
+
 $files = array();
 $x = 0;
 foreach($dir as $file ){
@@ -21,36 +34,48 @@ foreach($dir as $file ){
         array_push($files, $file->getFilename());
 }
 
+
+
+/*
+ * MEGA KLUDGE: TESTING ONLY
+$files = array();
+array_push($files, "AlbemarleCounty.php");
+//array_push($files, "Austin.php");
+*/
+
+
+
 //var_dump($files);
 
 //sleep(30);
 //$x = iterator_count(new DirectoryIterator("script\\singles\\old"));
-$x = $x -2;
+//$x = $x -2;
 
-for($indexer = 0;$indexer < $x;$indexer++)
+echo "number of files: ".sizeof($files)."\n";
+
+for($indexer = 0; $indexer < sizeof($files); $indexer++)
 {
-    echo $x;
-    echo "\n\nnew one\n\n";
     $scrape = array();
 
     $fl = $files[$indexer];
-    //echo $fl."\n";
-    //echo "here"."\n";
-    //sleep(30);
-    include("script\\singles\\new\\$fl");
+    echo "******** agency=$fl\n";
+
+    //include("script\\singles\\new\\$fl");
+    include(realpath("./script/singles/new/$fl"));
+
     $scrape = $incidentList;
 
     /*
-    insert the agency scrape file calls here
-    */
-    //variable scrape will be array containing info
-
-
+     * insert the agency scrape file calls here
+     */
     $size = sizeof(($scrape));
     //echo $scrape[$size - 1]["curlWorking"]."\n";
     //echo
-    if ($scrape[$size - 1]["curlWorking"] == false || $scrape[$size - 1]["parseWorking"] == false) {
-        echo "here\n";
+    //var_dump($scrape[$size - 1]);
+
+    //if ($scrape[$size - 1]["curlWorking"] == false || $scrape[$size - 1]["parseWorking"] == false) {
+    if ($scrape[$size - 1]["curlWorking"] == false) {
+        echo "---------------  skipping the rest...\n";
 
         continue;
     }
@@ -59,20 +84,29 @@ for($indexer = 0;$indexer < $x;$indexer++)
 
 
     $name = $scrape[$size - 1]["agencyName"];
-    //echo $name."\n"
-    $txt = fopen("data\\$name.txt", "a+");
-    if(filesize("data\\$name.txt") == 0)
+
+    $file_path = "./data/$name.txt";
+    //echo "********** name=$name  file_path=$file_path \n";
+
+    $txt = fopen($file_path, "a+");
+    if(filesize($file_path) == 0) {
         fwrite($txt, "$name\n");
+    }
+
     $reps = new repetitionChecker($txt, $name);
-    //sleep(30);
-    for($a = $size - 2;$a >= 0;$a--)
+    for($a = $size - 2; $a >= 0; $a--)
     {
-        //echo $a;
         $arr = $scrape[$a];
+	//var_dump($arr);
+
+	/* TODO: TURN FILTER ON ONCE FULLY IMPLEMENTED
         if(!filter($arr, $name))
             continue;
+	*/
+
         if(!$reps->checkrep($arr))
             continue;
+
         $temp1 = $arr["State"];
         $temp2 = $arr["City"];
         //$county = $arr["County"];
@@ -86,13 +120,22 @@ for($indexer = 0;$indexer < $x;$indexer++)
         $temp9 = $arr["Description"];
         $temp10 = $arr["Source"];
 
-        $str = "State: $temp1<br>City/Twp/Box#: $temp2<br>County: $county<br>Incident: $temp3<br>Address: $temp4<br>Unit: $temp5<br>Latlng: $temp6<br>Date: $temp7<br>Primary Dispatcher #: $temp8<br>Description: $temp9<br>Source: $temp10<br>";
-        $str2 = "State: $temp1\nCity/Twp/Box#: $temp2\nCounty: $county\nIncident: $temp3\nAddress: $temp4\nUnit: $temp5\nLatlng: $temp6\nDate: $temp7\nPrimary Dispatcher #: $temp8\nDescription: $temp9\nSource: $temp10\n";
+        $str =  "State: $temp1<br>City/Twp/Box#: $temp2<br>County: $county<br>Incident: $temp3<br>".
+	        "Address: $temp4<br>Unit: $temp5<br>Latlng: $temp6<br>Date: $temp7<br>Primary Dispatcher #: $temp8<br>".
+		"Description: $temp9<br>Source: $temp10<br>";
+
+        $str2 = "State: $temp1\nCity/Twp/Box#: $temp2\nCounty: $county\nIncident: $temp3\nAddress: $temp4\n".
+		"Unit: $temp5\nLatlng: $temp6\nDate: $temp7\nPrimary Dispatcher #: $temp8\nDescription: $temp9\n".
+		"Source: $temp10\n";
+
+
+	echo "          $temp9:  $temp4";
         emailsend($str, $str2);
 
     }
-    echo "here $indexer\n";
 }
+
+
 function filter($arr, $name)
 {
     $txt = $arr["Incident"];
@@ -101,22 +144,27 @@ function filter($arr, $name)
     if($txt == "known")
         return true;
     if($txt == "unknown") {
-        $txt = fopen("data\\Incident Updates\\$name-updates.txt", "a+");
+
+        $name_update_path = "./data/incident_updates/$name-updates.txt";
+        $txt = fopen($name_update_path, "a+");
         $temp = $arr["Description"];
         $temp += "\n";
         fwrite($txt, $temp);
         return true;
     }
 }
+
 function emailsend($message, $message2)
 {
     //echo $message;
-    $myfile = fopen("data\\incidents.txt", "a+") or die("can't open file");
+    $incidents_path = "./data/INCIDENTS.txt";
+    $myfile = fopen($incidents_path, "a+") or die("can't open file");
+    fwrite($myfile, "/n");
     fwrite($myfile, $message2);
     fclose($myfile);
     date_default_timezone_set('Etc/UTC');
 
-    $init = time();
+    $start_mail = time();
     $mail = new PHPMailer();
     $body= $message;
     $mail->IsSMTP(); // telling the class to use SMTP
@@ -127,21 +175,28 @@ function emailsend($message, $message2)
     $mail->SMTPSecure = "tls";                 // sets the prefix to the servier
     $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
     $mail->Port       = 587;                   // set the SMTP port for the GMAIL server
-    $mail->Username   = "lucas211w@gmail.com";  // GMAIL username
-    $mail->Password   = "tdjlsclzcwwrqteo";            // GMAIL password
-    $mail->SetFrom('lucas211w@gmail.com', 'Lucas Wang');
-    $mail->AddReplyTo("lucas211w@gmail.com","Lucas Wang");
+
+    //$mail->Username   = "lucas211w@gmail.com";  // GMAIL username
+    //$mail->Password   = "tdjlsclzcwwrqteo";            // GMAIL password
+    //$mail->SetFrom('lucas211w@gmail.com', 'Lucas Wang');
+    //$mail->AddReplyTo("lucas211w@gmail.com","Lucas Wang");
+
+    $mail->Username   = "georooArchive@gmail.com";  // GMAIL username
+    $mail->Password   = "georoo123";            // GMAIL password
+    $mail->SetFrom('georooArchive@gmail.com', 'GeoRoo Scrapper');
+    $mail->AddReplyTo("georooArchive@gmail.com","GeoRoo Archive");
+
     $mail->Subject    = "Incident Report";
     $mail->msgHTML($body);
     //clark_dong@yahoo.com
-    $address = "pap13p@gmail.com";
-    $mail->AddAddress($address, "Srivatsav Pyda");
+    $address = "georooarchive@gmail.com";
+    $mail->AddAddress($address, "GeoRoo Test");
 
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
-        echo "Message sent!";
+        echo "     EMAIL sent!   ";
     }
-    echo "\n\n". time()- $init."\n";
+    echo "   ". time()- $start_mail." seconds\n";
 }
 ?>
