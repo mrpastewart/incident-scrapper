@@ -51,7 +51,7 @@ class RepetitionChecker
 	*/
 
 	$end = explode("Epoch: ", $line);
-    if(sizeof($end > 1))
+    if(sizeof($end) > 1)
 	    $this->epoch = intval($end[1]);
 	echo "       LAST_EPOCH: ".$this->epoch."\n";
 
