@@ -8,13 +8,12 @@
 include("script/lib/DOM/simple_html_dom.php");
 
 
-class GetAgencies {
-
+class Agencies {
 
     private $states = array();
     private $numbers = array();
-    //private $names = array();
     private $descriptors = array();
+    //private $names = array();
 
 
     public function __construct()
@@ -35,8 +34,6 @@ class GetAgencies {
 
             $agencyid = $e -> value;
             $path = "data/ppt-$agencyid-$state.txt";
-
-            //if (!file_exists("data/$state.txt"))
             if (!file_exists($path))
             {
                 $myfile = fopen($path, "a+") or die("Unable to open file!");
@@ -61,16 +58,15 @@ class GetAgencies {
         $this->descriptors = $descs;
     }
 
-    public function getStates()
-    {
+    public function getStates() {
         return $this->states;
     }
-    public function getNums()
-    {
+
+    public function getNums() {
         return $this->numbers;
     }
-    public function getDescriptors()
-    {
+
+    public function getDescriptors() {
         return $this->descriptors;
     }
 }

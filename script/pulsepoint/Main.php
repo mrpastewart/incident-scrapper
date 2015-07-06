@@ -8,12 +8,13 @@
 
 
 //Importing classes
-//include "IncidentAppend.php";
+include "script/common/repetitionChecker.php";
 include "script/pulsepoint/AgencyFiles.php";
 include "script/pulsepoint/GetAgencies.php";
 include "script/pulsepoint/getIncidents.php";
 include "script/pulsepoint/EmailSender.php";
 
+$start_time = time();
 
 /*
  * setup timezone so we don't get errors
@@ -22,8 +23,6 @@ if( ! ini_get('date.timezone') )
 {
     date_default_timezone_set('GMT');
 }
-
-$start_time = time();
 
 /*
  * read in county mapping
@@ -44,61 +43,68 @@ if ($county_fd) {
 fclose($county_fd);
 
 
-/* DELETE
-	//Get agency list
-	//$agencies = $GA->getList();
+$Agencies = new Agencies();
+$Incidents = new Incidents();
+$Email = new EmailSender();
+$Checker = new repetitionChecker();
+//$Checker = new IncidentAppend();
 
-	//Create agency Files
-	//$AF = new AgencyFiles($agencies);
-	//$AF->agencyCreation();
-
-	//Create local arrays of agency names and numbers
-	//$agencynames = $AF->getNames();
-	//$descriptors["counties"] = $handle;
-*/
-
-$GA = new GetAgencies();
-$agencynumbers =  $GA->getNums();
-$agencystates = $GA->getStates();
-$descriptors = $GA->getDescriptors();
+$agencynumbers =  $Agencies->getNums();
+$agencystates = $Agencies->getStates();
+$descriptors = $Agencies->getDescriptors();
 //var_dump($agencynumbers);
 
-//Compile list of every recent incident from pulsepoint
-$GI = new getIncidents($agencynumbers, $agencystates, $Counties, $descriptors);
-$Incidents = $GI->getIncidents();
-//var_dump($Incidents);
 
+/*
+ * process one agency at a time
+ */
+for($i = 0; $i < count($agencynumbers); $i++) {
+    $last_incident = null;
 
-/* DELETE
-	//Create local arrays for guts of email
-	$Description = $GI->getDescription();
-	$Units = $GI->getUnits();
-	$Addresses = $GI->getAddress();
-	$IncidentNumber = $GI->getNumber();
-	$StateList = $GI->getStates();
-	$Locations = $GI->getGeo();
-	$Times = $GI->getTimes();
-	$Dates = $GI->getDates();
-	$Unix = $GI ->getUnix();
+    $Incidents->init($agencynumbers[$i], $agencystates[$i], $Counties);
+    $incidents = $Incidents->getIncidents();
+    //var_dump($incidents);
 
-	for($i = 0; $i < sizeof($IncidentNumber); $i++)
-	{
-	    echo $IncidentNumber[$i] . " " . $Incidents[$i];
+    $file_fd = $descriptors[$agencynumbers[$i]];
+    $Checker->init($file_fd);
+    $epoch = $Checker->getEpoch();
+    $o_epoch = $epoch;			// for comparison
+    //echo "********** fd=$file_fd   agency=".$agencynumbers[$i]."  epoch=".$epoch."\n";
+
+    /*
+     * process in reverse, oldest first
+     */
+    for($j = count($incidents); $j > 0; $j--) {
+	$incident = $incidents[$j-1];
+
+	/*
+	 * remember the most recent incident for state file
+	 */
+	$time = intval($incident["Epoch"]);
+	//echo "                this=".$time."     epoch=".$epoch."  addr=".$incident["Address"]."\n";
+	if($time > $epoch) {
+	    $epoch = $time;
+	    $last_incident = $incident;
 	}
 
-	foreach($StateList as $str)
-	{
-	    echo $str;
-	    echo "\n";
+	/*
+	 * send only new incidents
+	 */
+	if(($Checker->checkrep($incident)) && ($incident["Incident"] != "none")) {
+	    $Email->sendEmail($incident, $file_fd);
 	}
-	//$ES->sendEmail();
-	//$ES = new EmailSender($IncidentNumber, $Description, $Addresses, $Units, $Incidents, $StateList, $Times, $Locations, $Counties, $Dates. $Unix);
 
-	$Counties = $GI->getCounties();
-*/
+    }
 
+    /*
+     * update state file with latest epoch
+     */
+    if($epoch > $o_epoch) {
+	$Checker->incidentadd($last_incident);
+    }
 
-$ES = new EmailSender($Incidents, $descriptors);
+}
+
 
 $program_time = time()-$start_time;
 echo "       Total Run Time: $program_time seconds\n";

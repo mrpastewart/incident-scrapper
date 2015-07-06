@@ -6,27 +6,26 @@
  * Time: 10:46 AM
  */
 
-class getIncidents {
-    private $Incidents = array();
+class Incidents {
     private $Counties = array();
-    //private $Descriptors = array();
+    private $Incidents = array();
 
-    public function __construct(/*array*/ $agencies, $states, $county, $descs)
+    //public function __construct(/*array*/ $agency, $state, $county)
+    public function init(/*array*/ $agency, $state, $county)
     {
         $this->Counties=$county;
-        //$this->Descriptors = $descs;
+	$this->Incidents = array();	// must clear for each agency
 
         $i = 0;
         $current = "none";
-        foreach($agencies as $agencynumber)
-        {
+        //foreach($agencies as $agencynumber) {
+
             //echo "Should have created all the files and written the agency name in it!\n";
             //Appends incidents to proper agency file
 
-            $previous = $current;
-            $agency = $agencynumber;
+            //$agency = $agencynumber;
             echo "************** AGENCY: $agency\n";
-
+            $previous = $current;
             $current = $agency;
             $recent_url = "http://webapp.pulsepoint.org/recent_incidents.php?agencyid=$agency";
             $active_url = "http://webapp.pulsepoint.org/active_incidents.php?agencyid=$agency";
@@ -41,50 +40,47 @@ class getIncidents {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
             curl_setopt($ch, CURLOPT_POST, 0);
 
-
             curl_setopt($ch, CURLOPT_URL, $active_url);
-
             $page1 = curl_exec($ch);
-
             if (preg_match("/No Active/", $page1)) {
                 $page1 = "";
             }
 
             curl_setopt($ch, CURLOPT_URL, $recent_url);
             $page2 = curl_exec($ch);
-
             if (preg_match("/No Recent/", $page2)) {
                 $page2 = "";
             }
 
-            $page = $page1 . $page2;
+	    echo "$active_url\n$recent_url\n";
+            $page = $page1 . $page2;		// put recent first, then active for proper time sequence
 
             $currentTime = time();
-
             $lines = explode("\n", $page);
-
             $units = "";
             $date = "";
+
             //printf(var_dump($lines));
             foreach ($lines as $line) {
                 if (preg_match("/<row id=/", $line)) {
                     $ctr = 1;
                     $alarm = "";
+		    continue;
                 }
-                //echo "line: $line\n";
-                //echo $ctr."\n";
+
+                //echo "line-$ctr: $line\n";
                 if (preg_match("/<cell>/", $line) && $ctr == 1) {
                     $ctr++;
                     $line = preg_replace("/.*<cell>/", "", $line);
                     $timeStamp = preg_replace("@</cell>.*@", "", $line);
-                    $timeStamp = substr($timeStamp,0,strpos($timeStamp,"(")-1); //removes the minutes at the end
+                    $timeStamp = substr($timeStamp,0,strpos($timeStamp,"(")-1); //removes the (minutes) at the end
                     $date = substr($timeStamp,0,10);
                     $hrMinSec = substr($timeStamp,11);
-                    $unixValue = strtotime($date) + strtotime($hrMinSec);
-                    //echo "unix: ".strtotime($date) + strtotime($hrMinSec)."\n";
+                    $epoch = strtotime($date) + strtotime($hrMinSec);
                     $timeStamp = date("l, F d, Y",strtotime($date));
                     $timeStamp = "$timeStamp $hrMinSec -0800";
 
+                    //echo "epoch: date=".strtotime($date)."  sec=".strtotime($hrMinSec)."\n";
                     continue;
                 }
 
@@ -100,6 +96,7 @@ class getIncidents {
                     $ctr++;
                     $line = preg_replace("/.*<cell>/", "", $line);
                     $address = preg_replace("@</cell>.*@", "", $line);
+
                     continue;
                 }
 
@@ -131,158 +128,121 @@ class getIncidents {
                     continue;
                 }
 
+
                 if (!preg_match("@</row>@", $line)) {
+                    $ctr++;
                     continue;
-                }
+		} else {
 
-                $ctr++;
+		    /*
+		     * process this incident
+		     */
+		    $ctr++;
 
-                $description = preg_replace("/  +/", " ", $description);
-                $address = preg_replace("/&amp;/", "&", $address);
-                $address = preg_replace("/  +/", " ", $address);
+		    $description = preg_replace("/  +/", " ", $description);
+		    $address = preg_replace("/&amp;/", "&", $address);
+		    $address = preg_replace("/  +/", " ", $address);
 
-                if (strlen($alarm) > 0) {
-                    $description .= " ($alarm)";
-                }
+		    if (strlen($alarm) > 0) {
+			$description .= " ($alarm)";
+		    }
 
-                if (preg_match("/Medical Emergency/i", $description)) {
-                    continue;
-                }
+		    /* DELETE: DO NOT FILTER HERE
+			if (preg_match("/Medical Emergency/i", $description)) {
+			    continue;
+			}
 
-                if($this->filters($description)) {
-                    continue;
-                }
-                $checker = new IncidentAppend();
-                if(!($checker->checkrep($descs[$agency], intval($unixValue), $agency, $description)))
-                {
-                    continue;
-                }
+			if($this->filters($description)) {
+			    continue;
+			}
 
-                /* DELETE
-			$temp = explode("/", $date);
-			$month = (int) $temp[0];
-			$month = mts($month);
-			$day = (int) $temp[1];
-			$year = (int) substr(0, 4, $temp[2]);
-			$year = $year - 2015;
-			$temp = explode(":", substr(5, 12));
-			$hour = (int) $temp[0];
-			$minutes = (int) $temp[1];
-			$second = (int) $temp[2];
-			$unix = 31536000 * $year + $month + $day * 86400 + $hour * 3600 + 60 * $minutes + $second;
-		*/
+			//echo "      $epoch: $description - $address\n";
+			$checker = new IncidentAppend();
+			if(!($checker->checkrep($incident))) {
+			    continue;
+			}
+		    */
 
+		    $city = "none";
+		    if(preg_match("/, /", $address))
+		    {
+			$split = explode(", ", $address, 2);
+			$city = $split[1];
+			$address = $split[0];
+		    }
 
+		    /*
+		     * geocode county if already not in cache
+		     */
+		    if (!array_key_exists($agency, $this->Counties)) {
 
-                $city = "none";
-                if(preg_match("/, /", $address))
-                {
-                    $split = explode(", ", $address, 2);
-                    $city = $split[1];
-                    $address = $split[0];
-                }
+			//$temp = explode(",", $this->Geo[$i]);
+			//echo $this->location[$i];
+			//$temp1 = $temp[0];
+			//$temp2 = $temp[1];
 
+			$temp = $latlng;
+			$geocode = file_get_contents("http://maps.googleapis.com/maps/api/geocode/json?latlng=$temp&sensor=false");
+			$output = json_decode($geocode);
+			$temp2 = false;
 
+			for ($j = 0; $j < sizeof($output->results[0]->address_components); $j++) {
+			    //echo $output->results[0]->address_components[$j]->types[0]. ": " .
+			    //$this->Counties, $output->results[0]->address_components[$j]->long_name;
 
-		/*
-		 * geocode county if already not in cache
-		 */
-                if (array_key_exists($agency, $this->Counties))
-                {
-                    $cou = $this->Counties[$agency];
-                } else {
-                    $temp = $latlng;
+			    if ($output->results[0]->address_components[$j]->types[0] == "administrative_area_level_2") {
+				$new = $output->results[0]->address_components[$j]->long_name;
+				$new = str_replace(" County", "", $new);
+				$this->Counties[$agency] = $new;
+				//array_push($this->Counties, $this->Nums[$i]->$new);
 
-                    //$temp = explode(",", $this->Geo[$i]);
-                    //echo $this->location[$i];
-                    //$temp1 = $temp[0];
-                    //$temp2 = $temp[1];
-                    $geocode = file_get_contents("http://maps.googleapis.com/maps/api/geocode/json?latlng=$temp&sensor=false");
-                    $output = json_decode($geocode);
-                    $temp2 = false;
-                    for ($j = 0; $j < sizeof($output->results[0]->address_components); $j++)
-                    {
-                        //echo $output->results[0]->address_components[$j]->types[0]. ": " .
-                        //$this->Counties, $output->results[0]->address_components[$j]->long_name;
-                        if ($output->results[0]->address_components[$j]->types[0] == "administrative_area_level_2")
-                        {
-                            $new = $output->results[0]->address_components[$j]->long_name;
-                            $this->Counties[$agency] = $new;
-                            //array_push($this->Counties, $this->Nums[$i]->$new);
-                            $cou = $new;
-                            $txt = fopen("data/COUNTIES-ppt.txt", "a");
-                            $str = "$agency,$cou\n";
-                            fwrite($txt, $str);
-                            fclose($txt);
-                            $temp2 = true;
-                            break;
-                        }
-                    }
-                    if (!$temp2)
-                    {
-                        //$this->Counties[$this->Nums[$i]] = "none";
-                        $cou = "none";
-                    }
-                }
+				$county = $new;
+				$txt = fopen("data/COUNTIES-ppt.txt", "a");
+				$str = "$agency,$county\n";
+				fwrite($txt, $str);
+				fclose($txt);
+				$temp2 = true;
+				break;
+			    }
+			}
+			if (!$temp2)
+			{
+			    $this->Counties[$agency] = "none";
+			    //$county = "none";
+			}
+		    }
 
+		    $county = $this->Counties[$agency];
 
-                /* DELETE
-			State:     PA
-			City/Twp/Box#:  Hershey
-			County:    Erie   <<< MANUALLY ADD COUNTY
-			Incident:   crime   <<< STANDARDIZED CATEGORY
-			Address:    902 E 5TH
-			Unit:   Unit A, Unit B, Unit C
-			latlng:   LAT,LONG
-			Date:   fri, 06, 2015 11:35:30 -0800 (time zone)
-			Primary Dispatcher #:   <Agency name>
-			Description:    Strike Team   <<< MOVE ORIGINAL TYPE HERE
-			Source: PULSEPOINT  <<< HARDCODE THE SOURCE
-			Logo: http://webapp.pulsepoint.org/logo-agencyid.php?agencyid=01008
-		*/
+		    //array_push($this->City, $split[1]);
+		    //array_push($this->Address, $split[0]);
 
+		    $str = "description: $description\taddress: $address\tunits: $units\tEpoch: $epoch\n";
+		    $arr = array(
+			//"State"=>$states[$i],
+			"State"=>$state,
+			"City"=> $city,
+			"County"=> $county,
+			"Incident"=>$this->standardize($description),
+			"Address"=>$address,
+			"Unit"=>$units,
+			"latlng"=>$latlng,
+			"Date"=>$date,
+			"Primary Dispatcher #"=>$agency,
+			"Description"=>$description,
+			"Source"=>"PULSEPOINT",
+			"Logo"=> "",
+			"Timestamp"=>$timeStamp,
+			"Epoch"=>$epoch,
+			"General"=>$str,
+			"Number"=>$agency
+		    );
 
-                //array_push($this->City, $split[1]);
-                //array_push($this->Address, $split[0]);
+		    array_push($this->Incidents, $arr);
+		    echo "\t$timeStamp: $description\t $address, $city, $states[$i]  => ".$this->standardize($description)."\n";
 
-                $str = "description: $description\taddress: $address\tunits: $units\tEpoch: $unixValue\n";
-
-	        echo "      ".$description."  => ".$this->standardize($description)."\n";
-
-                $arr = array(
-                    "State"=>$states[$i],
-                    "City"=> $city,
-                    "County"=> $cou,
-                    "Incident"=>$this->standardize($description),
-                    "Address"=>$address,
-                    "Unit"=>$units,
-                    "latlng"=>$latlng,
-                    "Date"=>$date,
-                    "Primary Dispatcher #"=>$agency,
-                    "Description"=>$description,
-                    "Source"=>"PULSEPOINT",
-                    "Logo"=> "NONE - HAVE TO ADD LATER",
-                    "Timestamp"=>$timeStamp,
-                    "Epoch"=>$unixValue,
-                    "General"=>$str,
-                    "Number"=>$agency
-                );
-
-                array_push($this->Incidents, $arr);
-
-                // Check for repetition and append
-
-		/* DELETE
-			//fopen("$agency.txt", "a");
-			//echo "parsed: \n";
-			//echo "\tdescription: $description\n";
-			//echo "\taddress: $address\n";
-			//echo "\tunits: $units\n<";
-		*/
-
-                echo "\t$timeStamp: $description\t $address, $city\n";
-
-            }
+		}
+	    //}
             $i++;
 
 	    //sleep(5);		// delay after each agency fetch so not to flood the site
@@ -389,37 +349,6 @@ class getIncidents {
             return $stan[$str];
         return "none";
     }
-
-    /*
-    public function mts($i)
-    {
-        if($i = 1)
-            return 0;
-        if($i = 2)
-            return 31* 86400;
-        if($i = 3)
-            return (31 + 28)* 86400;
-        if($i = 4)
-            return (2*31 + 28)* 86400;
-        if($i = 5)
-            return (2*31 + 28 +30)* 86400;
-        if($i = 6)
-            return (2*31 + 28 +2*30)* 86400;
-        if($i = 7)
-            return (3*31 + 28 +2*30)* 86400;
-        if($i = 8)
-            return (4*31 + 28 +2*30)* 86400;
-        if($i = 9)
-            return (4*31 + 28 +3*30)* 86400;
-        if($i = 10)
-            return (5*31 + 28 +3*30)* 86400;
-        if($i = 11)
-            return (5*31 + 28 +4*30)* 86400;
-        if($i = 12)
-            return (6*31 + 28 +4*30)* 86400;
-
-    }
-    */
 
     public function getIncidents()
     {

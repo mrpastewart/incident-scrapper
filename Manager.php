@@ -51,8 +51,9 @@ array_push($files, "AlbemarleCounty.php");
 //$x = iterator_count(new DirectoryIterator("script\\singles\\old"));
 //$x = $x -2;
 
-echo "number of files: ".sizeof($files)."\n";
+$Checker = new repetitionChecker();
 
+echo "number of files: ".sizeof($files)."\n";
 for($indexer = 0; $indexer < sizeof($files); $indexer++)
 {
     $scrape = array();
@@ -61,7 +62,7 @@ for($indexer = 0; $indexer < sizeof($files); $indexer++)
     echo "******** agency=$fl\n";
 
     //include("script\\singles\\new\\$fl");
-    include(realpath("./script/singles/new/$fl"));
+    include(realpath("script/singles/new/$fl"));
 
     $scrape = $incidentList;
 
@@ -79,8 +80,6 @@ for($indexer = 0; $indexer < sizeof($files); $indexer++)
 
         continue;
     }
-    /*if (!$f->checkrep($txt, $arr[0]["timestamp"], $name))
-        continue;*/
 
 
     $name = $scrape[$size - 1]["agencyName"];
@@ -88,23 +87,34 @@ for($indexer = 0; $indexer < sizeof($files); $indexer++)
     $file_path = "./data/$name.txt";
     //echo "********** name=$name  file_path=$file_path \n";
 
-    $txt = fopen($file_path, "a+");
+    $file_fd = fopen($file_path, "a+");
     if(filesize($file_path) == 0) {
-        fwrite($txt, "$name\n");
+        fwrite($file_fd, "$name\tEpoch=0\n");
     }
+    $Checker->init($file_fd);
+    $epoch = $Checker->getEpoch();
+    $o_epoch = $epoch;
 
-    $reps = new repetitionChecker($txt, $name);
-    for($a = $size - 2; $a >= 0; $a--)
-    {
+    for($a = $size - 2; $a >= 0; $a--) {
         $arr = $scrape[$a];
 	//var_dump($arr);
+
+	/*
+         * remember the most recent incident for state file
+         */
+        $time = intval($arr["Epoch"]);
+        //echo "                this=".$time."     epoch=".$epoch."  addr=".$incident["Address"]."\n";
+        if($time > $epoch) {
+            $epoch = $time;
+            $last_incident = $arr;
+        }
 
 	/* TODO: TURN FILTER ON ONCE FULLY IMPLEMENTED
         if(!filter($arr, $name))
             continue;
 	*/
 
-        if(!$reps->checkrep($arr))
+        if(!$Checker->checkrep($arr))
             continue;
 
         $temp1 = $arr["State"];
@@ -132,6 +142,13 @@ for($indexer = 0; $indexer < sizeof($files); $indexer++)
 	echo "          $temp9:  $temp4";
         emailsend($str, $str2);
 
+    }
+
+    /*
+     * update state file with latest epoch
+     */
+    if($epoch > $o_epoch) {
+        $Checker->incidentadd($last_incident);
     }
 }
 
