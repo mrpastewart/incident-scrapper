@@ -36,7 +36,6 @@
         if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200)
         {
             $curlWorking = false;
-
         }
 
         $page = preg_replace("@.*>Jurisdiction</th><th@", "", $page);
@@ -98,37 +97,18 @@
             $timestamp = date("l, F d, Y", strtotime($date));
             $timestamp = "$timestamp $hrMinSec -0800";
 
-            //
-
-
-//
-//Filter for standardizing descriptions
-//
-            $stan = array(
-                "FIRE / UNKOWN" => "fire",
-                "FIRE - VEHICLE	" => "fire",
-                "FLOODING / BASEMENT" => "misc",
-                "FIRE / POLE" => "fire",
-                "FIRE - STRUCTURE" => "fire",
-                "ROAD CLOSED" => "misc",
-                "FLOODING / ROAD	" => "misc",);
-            if(array_key_exists($description, $stan))
-                $standardIncident =  $stan[$description];
-            else
-                $standardIncident =  "unknown";
-
             //compiles the data in array
             if ($description != '' && $address != '')
                 $incident = [
                     "State" => $state,
                     "City" => $community,
                     "County" => "Butler",
-                    "Incident" => $standardIncident,
+                    "Incident" => "none",
                     "Description" => $description,
                     "Unit" => "none",
                     "latlng" => "none",
                     "Primary Dispatcher #" => "Butler County Emergency Services",
-                    "Source" => "http://ems.co.butler.pa.us/publicwebcad/Summary.aspx",
+                    "Source" => $url,
                     "Logo" => "http://ems.co.butler.pa.us/publicwebcad/Images/PublicWebCADLogo.gif",
                     "Address" => $address,
                     "Timestamp" => $timestamp,
@@ -139,15 +119,16 @@
 	    echo "        $timestamp:  $description  $address\n";
         }
         //return statements
-    $generalInfo = [
+
+if(!$inTable)
+    $parseWorking = false;
+
+$generalInfo = [
         "curlWorking" => $curlWorking,
         "parseWorking" => $parseWorking,
         "agencyName" => "butler-PA"
     ];
 array_push($incidentList,$generalInfo);
 
-if(!$inTable)
-            $parseWorking = false;
-        //var_dump($incidentList);
 
         ?>
