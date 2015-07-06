@@ -21,7 +21,7 @@ $timestamp = null;
 $unixValue = null;
 */
 
-
+$unit = "";
 //
 //	Initialize curl
 //
@@ -62,6 +62,7 @@ $lines = explode("\n", $page);
 
 $last_incident = "none";
 $found_table = false;
+$ctr = 0;
 foreach ($lines as $line) {
 
 
@@ -147,11 +148,11 @@ foreach ($lines as $line) {
 	 * extract city from gmap link
 	 */
         $line = preg_replace("@.*daddr=@", "", $line);
-	$fields = split("&", $line);		// take first param
+	$fields = explode("&", $line);		// take first param
         $address = preg_replace("@.*=new>@", "", $line);
 
-	$addr1 = split("\+", $fields[0]);	// address in gmap link
-	$addr2 = split(" ", $address);		// address displayed
+	$addr1 = explode("\+", $fields[0]);	// address in gmap link
+	$addr2 = explode(" ", $address);		// address displayed
 	$city = "";
 	for ($i = 0; $i < sizeof($addr1)-1; $i++) {
 	    if ($addr1[$i] != $addr2[$i]) {
@@ -190,8 +191,8 @@ foreach ($lines as $line) {
     $line = preg_replace("@ +@", " ", $line);
 
     list($month, $day, $year) = explode("/", $date);
-
-    list($time_portion, $ampm_portion) = explode(" ", $time);
+    if(preg_match("@ @", $time))
+        list($time_portion, $ampm_portion) = explode(" ", $time);
 
     $hrMinSec = $time;
     $date = "$year-$month-$day";

@@ -51,7 +51,8 @@ class RepetitionChecker
 	*/
 
 	$end = explode("Epoch: ", $line);
-	$this->epoch = intval($end[1]);
+    if(sizeof($end > 1))
+	    $this->epoch = intval($end[1]);
 	echo "       LAST_EPOCH: ".$this->epoch."\n";
 
     }
@@ -64,7 +65,7 @@ class RepetitionChecker
     public function incidentadd($in) {
 	//var_dump($in);
 	$str = "description: ".$in["Description"]."\taddress: ".$in["Address"].
-		"\tunits: ".$in["Units"]."\tEpoch: ".$in["Epoch"]."\n";
+		"\tunits: ".$in["Unit"]."\tEpoch: ".$in["Epoch"]."\n";
         fwrite($this->file, $str);
 
 	echo "***** NEW_EPOCH: ".$str."\n";

@@ -13,9 +13,9 @@
 //require ".\\script\\lib\\PHPMailer\\PHPMailerAutoload.php";
 //$dir = new DirectoryIterator(".\\script\\singles\\new");
 
-include(realpath("./script/common/repetitionChecker.php"));
-require realpath("./script/lib/PHPMailer/PHPMailerAutoload.php");
-$dir = new DirectoryIterator(realpath("./script/singles/new"));
+include("script/common/repetitionChecker.php");
+require "script/lib/PHPMailer/PHPMailerAutoload.php";
+$dir = new DirectoryIterator("script/singles/new");
 
 /*
  * setup timezone so we don't get errors
@@ -126,7 +126,7 @@ for($indexer = 0; $indexer < sizeof($files); $indexer++)
         $temp5 = $arr["Unit"];
         $temp6 = $arr["latlng"];
         $temp7 = $arr["Timestamp"];
-        $temp8 = $arr["Number"];
+        $temp8 = $arr["Primary Dispatcher #"];
         $temp9 = $arr["Description"];
         $temp10 = $arr["Source"];
 

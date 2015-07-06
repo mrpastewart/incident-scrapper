@@ -43,6 +43,11 @@ if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200)
 
 }
 
+//variable definitions
+$second = 0;
+
+
+
 $currentTime = time();
 
 $lines = explode("</tr>", $page);
@@ -51,8 +56,8 @@ foreach ($lines as $line) {
     $line = preg_replace("@ style='color:red;'@", "" , $line);
     $line = preg_replace("@.*</center></td><td>@", "" , $line);
     $line = preg_replace("@<td>@", "" , $line);
-
-    list($date, $time, $city, $d, $description1, $description2, $address) = split("</td>", $line);
+    if(preg_match("</td>", $line))
+        list($date, $time, $city, $d, $description1, $description2, $address) = explode("</td>", $line);
 
     $date = trim($date);
     $time = trim($time);
@@ -64,8 +69,8 @@ foreach ($lines as $line) {
     if (strlen($description1) == 0) {
         continue;
     }
-
-    list($month, $day) = split("-", $date);
+    if(preg_match("-", $date))
+        list($month, $day) = explode("-", $date);
 
     $year = date("Y");
 
