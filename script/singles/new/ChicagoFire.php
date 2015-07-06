@@ -123,5 +123,5 @@ $generalInfo = [
 ];
 
 array_push($incidentList,$generalInfo);
-var_dump($incidentList);
+//var_dump($incidentList);
 ?>
