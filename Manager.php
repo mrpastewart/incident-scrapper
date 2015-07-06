@@ -15,7 +15,8 @@
 
 include("script/common/repetitionChecker.php");
 require "script/lib/PHPMailer/PHPMailerAutoload.php";
-$dir = new DirectoryIterator("script/singles/new");
+//$dir = new DirectoryIterator("script/singles/new");		// TODO: RE-ENABLE THIS IN PRODUCTION
+$dir = new DirectoryIterator("script/singles/test");		// KLUDGE FOR TESTING ONLY
 
 /*
  * setup timezone so we don't get errors
@@ -140,7 +141,7 @@ for($indexer = 0; $indexer < sizeof($files); $indexer++)
 
 
 	echo "          $temp9:  $temp4";
-        emailsend($str, $str2);
+//        emailsend($str, $str2);			TODO: RE-ENABLED IN PRODUCTION MODE
 
     }
 
