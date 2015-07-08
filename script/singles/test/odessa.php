@@ -70,7 +70,7 @@ foreach ($lines as $line) {
     }
 
     if (preg_match("@<dt>Address:</dt>|<dt>Location:</dt>|<dt>City:</dt>@", $line) && $ctr > 2) {
-        if (preg_match("@<dd>", $line)) {
+        if (preg_match("@<dd>@", $line)) {
             $line = preg_replace("@.*<dd>@", "", $line);
             $line = preg_replace("@</dd>.*@", "", $line);
             $line = preg_replace("@<br.*@", "", $line);

@@ -3,13 +3,14 @@
  * Created by PhpStorm.
  * User: LucasWang
  * Date: 7/7/15
- * Time: 11:24 PM
+ * Time: 12:09 PM
  */
-$url = "http://www.memorialfire89.com/incidents";
+$url = "http://www.cwfc41.com/incidents";
 $curlWorking = true;
 $parseWorking = true;
 $incidentList = [];
-$state = "DE";
+$state = "WY";
+
 //
 //	Initialize curl
 //
@@ -37,69 +38,60 @@ if (strlen($page) < 200) {
 
 $currentTime = time();
 
-$page = preg_replace("@.*Live Run Log@", "", $page);
-$page = preg_replace("@pagingTabs.*@", "", $page);
+$page = preg_replace("@.*>Live Run Log<@", "", $page);
+$page = preg_replace("@<div class=.paging.*@", "", $page);
 
 $lines = explode("\n", $page);
 
 foreach ($lines as $line) {
+    if (preg_match("@<h3 class.*innerpg@", $line)) {
+        $ctr = 2;
 
-    if (preg_match("@strong>Date@", $line)) {
-        $ctr = 1;
-        $date_time = preg_replace("@.*</strong> *@", "", $line);
-        $date_time = preg_replace("@<br/>.*@", "", $date_time);
+        $line = preg_replace("@.*headings.>@", "", $line);
+        $line = preg_replace("@</h3>@", "", $line);
+
+        $line = trim(preg_replace("@,@", "", $line));
+        list($dow, $month, $day, $year, $junk, $hour, $minute) = preg_split("@[ :]@", $line);
+
         continue;
     }
 
-    if (preg_match("@Nature:@", $line) && $ctr == 1) {
+    if (preg_match("@Nature:@", $line) && $ctr == 2) {
         $ctr++;
-        $description = preg_replace("@.*Nature:</strong> *@", "", $line);
+        $line = preg_replace("@.*Nature: *@", "", $line);
+        $description = preg_replace("@.*strong> *@", "", $line);
         $description = preg_replace("@<br/>.*@", "", $description);
-
         $address = "";
-
-        if (!preg_match("@Location:@", $line)) {
-            continue;
-        }
-    }
-
-    if (preg_match("@Location:@", $line) && $ctr == 2) {
-        $address = preg_replace("@.*Location:</strong> *@", "", $line);
-        $address = preg_replace("@<br/>.*@", "", $address);
         continue;
     }
 
-    if (preg_match("@City:|Address:|Location:@", $line) && $ctr == 2) {
-        $line = preg_replace("@.*</strong> *@", "", $line);
+    if (preg_match("@Location:|Address:|City:@", $line) && $ctr == 3) {
+        $line = preg_replace("@.*Location: *@", "", $line);
+        $line = preg_replace("@.*Address: *@", "", $line);
+        $line = preg_replace("@.*City: *@", "", $line);
+
+        $line = preg_replace("@.*strong> *@", "", $line);
         $line = preg_replace("@<br/>.*@", "", $line);
 
         if (strlen($address) > 0) {
-            $address .= ", ";
+            $address .= "; ";
         }
 
         $address .= $line;
-
         continue;
     }
 
-    if (preg_match("@</div>@", $line) && $ctr == 2) {
-        $ctr = 5;
+    if (preg_match("@</p>@", $line) && $ctr == 3) {
+        $ctr++;
     }
 
-    if (preg_match("@Cross Streets@", $line)) {
-        $ctr = 5;
-    }
-
-    if ($ctr != 5) {
+    if ($ctr != 4) {
         continue;
     }
 
     $ctr++;
 
     $address = preg_replace("@  +@", " ", $address);
-
-    $date_time = preg_replace("@,@", "", $date_time);
-    list($x, $month, $day, $year, $x, $hour, $minute) = explode("[/ :]", $date_time);
 
     if ($month == "January") {
         $month = "01";
@@ -138,34 +130,32 @@ foreach ($lines as $line) {
         $month = "12";
     }
 
-    $date = "$year-$month-$day";
-    $hrMinSec = "$hour:$minute";
-    $unixValue = strtotime($date) + strtotime($hrMinSec);
-    $timestamp = date("l, F d, Y", strtotime($date));
-    $timestamp = "$timestamp $hrMinSec -0800";
+    $timestamp = "$year-$month-$day $hour:$minute";
+    $address = trim($address);
 
     $incident = [
-        "State" => "DE",
-        "City" => "none",
-        "County" => "none",
-        "Incident" => "none",
+        "State" => "TX",
+        "City" => "Austin",
+        "County" => "Travis",
+        "Incident" => $standardIncident,
         "Description" => $description,
         "Unit" => "none",
         "latlng" => "none",
-        "Primary Dispatcher #" => "Memorial Fire Rescue",
+        "Primary Dispatcher #" => "Travis County FD",
         "Source" => $url,
-        "Logo" => "http://www.memorialfire89.com/images/layout/banner.jpg",
+        "Logo" => "https://pbs.twimg.com/profile_images/3158256826/f9f34aa109a26aa107a2a9edb85a201b_normal.jpeg",
         "Address" => $address,
         "Timestamp" => $timestamp,
         "Epoch" => $unixValue,
     ];
 
     array_push($incidentList,$incident);
+    echo "       $timestamp:  $description  $address\n";
 }
 $generalInfo = [
     "curlWorking" => $curlWorking,
     "parseWorking" => $parseWorking,
-    "agencyName" => "memorial-DE"
+    "agencyName" => "austin-TX"
 ];
 
 array_push($incidentList,$generalInfo);

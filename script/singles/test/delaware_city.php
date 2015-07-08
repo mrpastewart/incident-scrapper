@@ -4,10 +4,15 @@
  * User: LucasWang
  * Date: 7/6/15
  * Time: 2:39 PM
+
  */
-//BROKEN: Timestamp not being parsed. Does retrieve address and description.
 
 $url = "http://www.dcfc15.com/incidents";
+$curlWorking = true;
+$parseWorking = true;
+$incidentList = [];
+$state = "DE";
+
 //
 //	Initialize curl
 //
@@ -29,8 +34,8 @@ curl_setopt($ch, CURLOPT_URL, $url);
 
 $page = curl_exec($ch);
 
-if (strlen($page) < 200) {
-    die();
+if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200) {
+    $curlWorking = false;
 }
 
 $currentTime = time();
@@ -44,8 +49,8 @@ foreach ($lines as $line) {
 
     if (preg_match("@class=.sch3c.>@", $line)) {
         $ctr = 1;
-        $date_time = preg_replace("@.*sch3c.>", "", $line);
-        $date_time = preg_replace("@</div>.*", "", $date_time);
+        $date_time = preg_replace("@.*sch3c.>@", "", $line);
+        $date_time = preg_replace("@</div>.*@", "", $date_time);
         continue;
     }
 
@@ -101,7 +106,7 @@ foreach ($lines as $line) {
     $address = preg_replace("@  +@", " ", $address);
 
     $date_time = preg_replace("@,@", "", $date_time);
-    list($x, $month, $day, $year, $x, $hour, $minute) = split("[/ :]", $date_time);
+    list($x, $month, $day, $year, $x, $hour, $minute) = preg_split("@[/ :]@", $date_time);
 
     if ($month == "January") {
         $month = "01";
@@ -140,16 +145,37 @@ foreach ($lines as $line) {
         $month = "12";
     }
 
-    $timestamp = "$year-$month-$day $hour:$minute";
 
-    echo "parsed: \n";
-    echo "\ttimestamp: $timestamp\n";
-    echo "\tdescription: $description\n";
-    echo "\taddress: $address\n";
+    $date = "$year-$month-$day";
+    $hrMinSec = "$hour:$minute";
+    $unixValue = strtotime($date) + strtotime($hrMinSec);
+    $timestamp = date("l, F d, Y", strtotime($date));
+    $timestamp = "$timestamp $hrMinSec -0800";
 
-    if ($description == "Medical Emergency") {
-        echo "skipping, medical emergency\n";
-        continue;
-    }
+    $incident = [
+        "State" => "DE",
+        "City" => "none",
+        "County" => "New Castle",
+        "Incident" => "none",
+        "Description" => $description,
+        "Unit" => "none",
+        "latlng" => "none",
+        "Primary Dispatcher #" => "Delaware City Fire Company",
+        "Source" => $url,
+        "Logo" => "http://www.dcfc15.com/images/logo.png",
+        "Address" => $address,
+        "Timestamp" => $timestamp,
+        "Epoch" => $unixValue,
+    ];
+
+    array_push($incidentList,$incident);
+    echo "       $timestamp:  $description  $address\n";
 }
+$generalInfo = [
+    "curlWorking" => $curlWorking,
+    "parseWorking" => $parseWorking,
+    "agencyName" => "delaware_city-DE"
+];
+
+array_push($incidentList,$generalInfo);
 ?>

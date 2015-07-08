@@ -16,7 +16,6 @@ $state = "CA";
 //
 
 $ch = curl_init();
-
 curl_setopt($ch, CURLOPT_VERBOSE, 0);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_TIMEOUT, 270);
@@ -86,7 +85,7 @@ foreach ($lines as $line) {
     }
 
     $incident = [
-        "State" => "TX",
+        "State" => "CA",
         "City" => $community,
         "County" => "Ventura",
         "Incident" => "none",

@@ -77,13 +77,6 @@ foreach ($lines as $line) {
     if (strlen($address) < 1) {
         continue;
     }
-    $timestamp = time();
-
-
-    echo "parsed: \n";
-    echo "\tdescription: $description\n";
-    echo "\taddress: $address\n";
-    echo gmdate("Y-m-d\TH:i:s\Z", $timestamp);
 
     if ($description != '' && $address != '')
         $incident = [
@@ -98,16 +91,16 @@ foreach ($lines as $line) {
             "Source" => $url,
             "Logo" => "https://pbs.twimg.com/profile_images/525486454747586560/9OHpDWO-.png",
             "Address" => $address,
-            "Timestamp" => $timestamp,
-            "Epoch" => $unixValue
+            "Timestamp" => "none",
+            "Epoch" => "none"
           ];
          array_push($incidentList,$incident);
-         echo "        $timestamp:  $description  $address\n";
+         echo "          $description  $address\n";
 }
 $generalInfo = [
     "curlWorking" => $curlWorking,
     "parseWorking" => $parseWorking,
-    "agencyName" => "Dallas"
+    "agencyName" => "dallas-TX"
 ];
 array_push($incidentList, $generalInfo);
-var_dump($incidentList);
+?>

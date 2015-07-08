@@ -67,7 +67,7 @@ foreach ($lines as $line) {
             $line = preg_replace("@<dt>Location:.*@", "", $line);
         }
 
-        $line = preg_replace("@.*<dd@>", "", $line);
+        $line = preg_replace("@.*<dd>@", "", $line);
         $description = preg_replace("@</dd>.*@", "", $line);
         $description = preg_replace("@<br/>.*@", "", $description);
 

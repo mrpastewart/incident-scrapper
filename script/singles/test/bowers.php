@@ -2,24 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: LucasWang
- * Date: 7/2/15
- * Time: 10:57 AM
+ * Date: 7/8/15
+ * Time: 12:22 PM
  */
- 
-//NO ADDRESS
-
-//Script return values
+$url = "http://www.bowersfire.com/incidents";
 $curlWorking = true;
 $parseWorking = true;
 $incidentList = [];
 $state = "DE";
-$city = "Frederica";
-
-$url = "http://www.bowersfire.com/incidents";
-$email_url = $url;
-$agency_name = "Bowers Fire, Frederica, Delaware";
-
-
 //
 //	Initialize curl
 //
@@ -41,48 +31,45 @@ curl_setopt($ch, CURLOPT_URL, $url);
 
 $page = curl_exec($ch);
 
-if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200)
-{
+if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200) {
     $curlWorking = false;
-
 }
 
 $currentTime = time();
 
 $page = preg_replace("@.*Live Run Log@", "", $page);
 $page = preg_replace("@pagingTabs.*@", "", $page);
-printf($page);
 
 $lines = explode("\n", $page);
 
 foreach ($lines as $line) {
 
-    if (ereg("pstag", $line)) {
+    if (preg_match("@pstag@", $line)) {
         $ctr = 1;
         $date_time = preg_replace("@</div>.*@", "", $line);
         $date_time = preg_replace("@.*.> *@", "", $date_time);
         continue;
     }
 
-    if (ereg("Nature:", $line) && $ctr == 1) {
+    if (preg_match("@Nature:@", $line) && $ctr == 1) {
         $ctr++;
         $description = preg_replace("@.*Nature:</strong> *@", "", $line);
         $description = preg_replace("@<br/>.*@", "", $description);
 
         $address = "";
 
-        if (!ereg("Location:", $line)) {
+        if (!preg_match("@Location:@", $line)) {
             continue;
         }
     }
 
-    if (ereg("Location:", $line) && $ctr == 2) {
+    if (preg_match("@Location:@", $line) && $ctr == 2) {
         $address = preg_replace("@.*Location:</strong> *@", "", $line);
         $address = preg_replace("@<br/>.*@", "", $address);
         continue;
     }
 
-    if (ereg("City:|Address:|Location:", $line) && $ctr == 2) {
+    if (preg_match("@City:|Address:|Location:@", $line) && $ctr == 2) {
         $line = preg_replace("@.*</strong> *@", "", $line);
         $line = preg_replace("@<br/>.*@", "", $line);
 
@@ -112,7 +99,7 @@ foreach ($lines as $line) {
     $address = preg_replace("@  +@", " ", $address);
 
     $date_time = preg_replace("@,@", "", $date_time);
-    list($x, $month, $day, $year, $x, $hour, $minute) = split("[/ :]", $date_time);
+    list($x, $month, $day, $year, $x, $hour, $minute) = preg_split("@[/ :]@", $date_time);
 
     if ($month == "January") {
         $month = "01";
@@ -151,50 +138,36 @@ foreach ($lines as $line) {
         $month = "12";
     }
 
-    $timestamp = "$year-$month-$day $hour:$minute";
-
+    $date = "$year-$month-$day";
     $hrMinSec = "$hour:$minute";
-    $date = "$year/$month/$day";
     $unixValue = strtotime($date) + strtotime($hrMinSec);
     $timestamp = date("l, F d, Y", strtotime($date));
     $timestamp = "$timestamp $hrMinSec -0800";
 
+    $incident = [
+        "State" => "DE",
+        "City" => "none",
+        "County" => "Kent",
+        "Incident" => "none",
+        "Description" => $description,
+        "Unit" => "none",
+        "latlng" => "none",
+        "Primary Dispatcher #" => "Bowers Fire Co.",
+        "Source" => $url,
+        "Logo" => "none",
+        "Address" => $address,
+        "Timestamp" => $timestamp,
+        "Epoch" => $unixValue,
+    ];
 
-    //
-    //Filter for standardizing descriptions
-    //
-    $stan = array(
-        //List of knowns
-    );
-
-    if(array_key_exists($description, $stan))
-        $standardIncident =  $stan[$description];
-    else
-        $standardIncident = "unknown";
-
-    echo "        $timestamp:  $description   $address\n";
+    array_push($incidentList,$incident);
+    echo "       $timestamp:  $description  $address\n";
 }
-
-$incident = [
-    "State" => "VA",
-    "City" => $city,
-    "County" => "Albemarle",
-    "Incident" => $standardIncident,
-    "Description" => $description,
-    "Unit" => "none",
-    "latlng" => "none",
-    "Primary Dispatcher #" => "Albemarle FD",
-    "Source" => $url,
-    "Logo" => "http://warhammer.mcc.virginia.edu/fids/images/coaseal2.gif",
-    "Address" => $address,
-    "Timestamp" => $timestamp,
-    "Epoch" => $unixValue,
-];
-
-array_push($incidentList,$incident);
 $generalInfo = [
     "curlWorking" => $curlWorking,
     "parseWorking" => $parseWorking,
-    "agencyName" => "albemarle-VA"
+    "agencyName" => "bowers-DE"
 ];
+
+array_push($incidentList,$generalInfo);
 ?>

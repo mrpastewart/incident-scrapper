@@ -65,7 +65,7 @@ foreach ($lines as $line) {
         }
     }
 
-    if (preg_match("@Location:", $line) && $ctr == 2) {
+    if (preg_match("@Location:@", $line) && $ctr == 2) {
         $address = preg_replace("@.*Location:</strong> *@", "", $line);
         $address = preg_replace("@<br/>.*@", "", $address);
         continue;

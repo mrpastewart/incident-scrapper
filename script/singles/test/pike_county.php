@@ -59,7 +59,7 @@ foreach ($lines as $line) {
     if (preg_match("@<td class=.table-data@", $line) && $ctr == 2) {
         $ctr = 3;
         $line = preg_replace("@.*table-data.>@", "", $line);
-        $description = preg_replace("@&nb.*", "", $line);
+        $description = preg_replace("@&nb.*@", "", $line);
         continue;
     }
 
