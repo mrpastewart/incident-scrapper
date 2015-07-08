@@ -63,7 +63,8 @@ for($indexer = 0; $indexer < sizeof($files); $indexer++)
     echo "******** agency=$fl\n";
 
     //include("script\\singles\\new\\$fl");
-    include(realpath("script/singles/new/$fl"));
+    //include(realpath("script/singles/new/$fl"));
+    include(realpath("script/singles/test/$fl"));
 
     $scrape = $incidentList;
 
