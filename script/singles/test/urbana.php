@@ -51,7 +51,7 @@ foreach ($lines as $line) {
         $line = preg_replace("@.*title=.@", "", $line);
         $line = preg_replace("@. rel=.bookmark.><span class=.timestamp updated.>@", " ", $line);
 
-        list($time_portion, $ampm_portion, $date_portion) = split(" ", $line);
+        list($time_portion, $ampm_portion, $date_portion) = preg_split("@ @", $line);
         continue;
     }
 

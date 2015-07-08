@@ -32,8 +32,8 @@ curl_setopt($ch, CURLOPT_URL, $url);
 
 $page = curl_exec($ch);
 
-if (strlen($page) < 200) {
-    die();
+if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200) {
+    $curlWorking = false;
 }
 
 $currentTime = time();
@@ -130,20 +130,24 @@ foreach ($lines as $line) {
         $month = "12";
     }
 
-    $timestamp = "$year-$month-$day $hour:$minute";
+    $date = "$year/$month/$day";
+    $hrMinSec = "$hour:$minute";
+    $unixValue = strtotime($date) + strtotime($hrMinSec);
+    $timestamp = date("l, F d, Y", strtotime($date));
+    $timestamp = "$timestamp $hrMinSec -0800";
     $address = trim($address);
 
     $incident = [
-        "State" => "TX",
-        "City" => "Austin",
-        "County" => "Travis",
-        "Incident" => $standardIncident,
+        "State" => $state,
+        "City" => "none",
+        "County" => "Kent",
+        "Incident" => "none",
         "Description" => $description,
         "Unit" => "none",
         "latlng" => "none",
-        "Primary Dispatcher #" => "Travis County FD",
+        "Primary Dispatcher #" => "Camden-Wyoming Fire Company",
         "Source" => $url,
-        "Logo" => "https://pbs.twimg.com/profile_images/3158256826/f9f34aa109a26aa107a2a9edb85a201b_normal.jpeg",
+        "Logo" => "http://www.cwfc41.com/incidents",
         "Address" => $address,
         "Timestamp" => $timestamp,
         "Epoch" => $unixValue,
@@ -155,7 +159,7 @@ foreach ($lines as $line) {
 $generalInfo = [
     "curlWorking" => $curlWorking,
     "parseWorking" => $parseWorking,
-    "agencyName" => "austin-TX"
+    "agencyName" => "camden-WY"
 ];
 
 array_push($incidentList,$generalInfo);

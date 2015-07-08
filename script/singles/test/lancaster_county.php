@@ -81,7 +81,7 @@ foreach ($lines as $line) {
         }
     }
 
-    if (ereg("tdLocation", $line) && $ctr = 3) {
+    if (preg_match("@tdLocation@", $line) && $ctr = 3) {
         $address = preg_replace("@.*dxgv.>@", "", $line);
         $address = preg_replace("@ *<.td>.*@", "", $address);
         $address = preg_replace("@<br>@i", ", ", $address);

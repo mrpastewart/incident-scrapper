@@ -1,0 +1,3 @@
+york_county-PA	Epoch=0
+description: WIRES DOWN	address: GRANTLEY RD	units: none	Epoch: 2872673220
+description: MVA W/INJURIES CL 2	address: RATHTON RD	units: none	Epoch: 2872673640

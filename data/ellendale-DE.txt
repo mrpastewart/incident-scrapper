@@ -1,0 +1,2 @@
+ellendale-DE	Epoch=0
+description: Child Locked In Vehicle	address: 9598 Coastal Hwy; Milford, DE 19963	units: none	Epoch: 2872662300

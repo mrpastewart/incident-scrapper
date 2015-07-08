@@ -1,0 +1,5 @@
+San_Antonio	Epoch=0
+description: OTHER FIRE	address: N Loop 1604 W / W Bitters Rd	units: 2	Epoch: 2872668060
+description: Other/Unknown	address: 200 W Crockett St	units: 1	Epoch: 2872669380
+description: ASSIST PUBLIC	address: 3800 E Southcross Blvd	units: 2	Epoch: 2872669860
+description: OTHER FIRE	address: Blanco Rd / Huebner Rd	units: 2	Epoch: 2872670340

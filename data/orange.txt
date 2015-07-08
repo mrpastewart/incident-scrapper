@@ -1,0 +1,5 @@
+orange	Epoch=0
+description: MEDICAL-ALPHA; EMS	address: 8109 JOHN YOUNG PKWY	units: none	Epoch: 2872671365
+description: MEDICAL-ALPHA; EMS	address: 4049 ORANGE BLOSSOM TR	units: none	Epoch: 2872673145
+description: MEDICAL-BRAVO; EMS	address: 4025 OAK RIDGE RD	units: none	Epoch: 2872673344
+description: MEDICAL-DELTA; EMS	address: 4431 TEXAS AV	units: none	Epoch: 2872673944

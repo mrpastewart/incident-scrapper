@@ -65,7 +65,7 @@ foreach ($lines as $line) {
         $ctr++;
 
         $line = trim(preg_replace("@,@", "", $line));
-        list($dow, $month, $day, $year, $junk, $hour, $minute) = split("[ :]", $line);
+        list($dow, $month, $day, $year, $junk, $hour, $minute) = preg_split("@[ :]@", $line);
 
         continue;
     }

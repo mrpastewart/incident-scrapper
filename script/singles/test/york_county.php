@@ -1,20 +1,18 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Srivatsav
- * Date: 7/6/2015
+ * User: LucasWang
+ * Date: 7/7/2015
  * Time: 1:27 PM
  */
-
-
-//
-//	Initialize curl
-//
-
-
+$url = "http://www.ycdes.org/webcad/";
 $curlWorking = true;
 $parseWorking = true;
 $incidentList = [];
+$state = "PA";
+//
+//	Initialize curl
+//
 
 $ch = curl_init();
 
@@ -28,15 +26,16 @@ curl_setopt($ch, CURLOPT_POST, 0);
 //	Retrieve page
 //
 
-curl_setopt($ch, CURLOPT_URL, "http://www.ycdes.org/webcad/");
+curl_setopt($ch, CURLOPT_URL, $url);
 $page = curl_exec($ch);
 
-if (strlen($page) < 2000) {
-    die();
+if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200) {
+    $curlWorking = false;
 }
+
 /*
-$page = ereg_replace(".*<table ", "", $page);
-$page = ereg_replace("</table>.*", "", $page);
+$page = preg_replace("@.*<table ", "", $page);
+$page = preg_replace("@</table>.*", "", $page);
 */
 $lines = explode("\n", $page);
 
@@ -50,7 +49,7 @@ foreach ($lines as $line) {
 
 //echo "\n*** $line\n";
 
-    list($junk, $timestamp, $box, $description, $address1, $address2, $address3, $cross_street, $cross_street, $cross_street, $intersection, $location) = explode("COLSEP", $line);
+    list($junk, $timestamp, $box, $description, $address1, $address2, $address3, $cross_street, $cross_street, $cross_street, $location) = preg_split("@COLSEP@", $line);
 
     $address1 = preg_replace("@^ +@", "", $address1);
     $address2 = preg_replace("@^ +@", "", $address2);
@@ -73,46 +72,40 @@ foreach ($lines as $line) {
     $date = preg_replace("@ .*@", "", $timestamp);
 
 //	list($day, $month, $year) = split("-", $date);
-    //echo $time;
-    //sleep(30);
-    list($hour, $minute) = explode(":", $time);
-    list($month, $day, $year) = explode("-", $date);
-    $timestamp = "$year-$month-$day $time";
+    list($month, $day, $year) = preg_split("@-@", $date);
+
+    $address = $address1 . $address2 . $address3;
 
     $date = "$year-$month-$day";
-    $hrMinSec = "$hour:$minute";
+    $hrMinSec = $time;
     $unixValue = strtotime($date) + strtotime($hrMinSec);
     $timestamp = date("l, F d, Y", strtotime($date));
     $timestamp = "$timestamp $hrMinSec -0800";
 
-    $address = $address1 . $address2 . $address3;
-
     $incident = [
         "State" => "PA",
         "City" => "none",
-        "County" => "York County",
+        "County" => "York",
         "Incident" => "none",
         "Description" => $description,
         "Unit" => "none",
         "latlng" => "none",
-        "Primary Dispatcher #" => "York County 911",
-        "Source" => "http://www.ycdes.org/webcad/",
-        "Logo" => "none",
+        "Primary Dispatcher #" => "York County 911 - Live Incident Status",
+        "Source" => $url,
+        "Logo" => "http://www.ycdes.org/webcad/images/livestatuslogo.jpg",
         "Address" => $address,
         "Timestamp" => $timestamp,
         "Epoch" => $unixValue,
     ];
-    array_push($incidentList, $incident);
 
-    /*echo "parsed: \n";
-    echo "\ttimestamp: $timestamp\n\tbox: $box\n\tdesc = $description\n";
-    echo "\taddress = $address\n";
-    echo "\tlocation = $location\n";*/
+    array_push($incidentList,$incident);
+    echo "       $timestamp:  $description  $address\n";
 }
 $generalInfo = [
     "curlWorking" => $curlWorking,
     "parseWorking" => $parseWorking,
-    "agencyName" => "York_County"
+    "agencyName" => "york_county-PA"
 ];
-array_push($incidentList, $generalInfo);
-//var_dump($incidentList);
+
+array_push($incidentList,$generalInfo);
+?>

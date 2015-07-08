@@ -50,7 +50,7 @@ foreach ($lines as $line) {
         $line = preg_replace("@.*<em class=.date.>@", "", $line);
         $line = preg_replace("@</em>.*@", "", $line);
         $line = preg_replace("@,@", "", $line);
-        list($dow, $month, $day, $year, $junk, $time_portion) = explode(" ", $line);
+        list($dow, $month, $day, $year, $time_portion) = preg_split("@ @", $line);
         continue;
     }
 

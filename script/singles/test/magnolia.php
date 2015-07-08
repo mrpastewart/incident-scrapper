@@ -101,7 +101,7 @@ foreach ($lines as $line) {
     $address = preg_replace("@  +@", " ", $address);
 
     $date_time = preg_replace("@,@", "", $date_time);
-    list($x, $month, $day, $year, $x, $hour, $minute) = split("[/ :]", $date_time);
+    list($x, $month, $day, $year, $x, $hour, $minute) = preg_split("@[/ :]@", $date_time);
 
     if ($month == "January") {
         $month = "01";
