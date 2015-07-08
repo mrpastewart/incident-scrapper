@@ -35,10 +35,8 @@ curl_setopt($ch, CURLOPT_URL, $url);
 
 $page = curl_exec($ch);
 
-if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200)
-{
+if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200) {
     $curlWorking = false;
-
 }
 
 $currentTime = time();
@@ -168,7 +166,6 @@ if($ctr > 0 && $ctr < 8) {
         $hour = 0;
     }
 
-    $timestamp = "$year-$month-$day $hour:$minute:00";
     $date = "$year-$month-$day";
     $hrMinSec = "$hour:$minute";
     $unixValue = strtotime($date) + strtotime($hrMinSec);
@@ -185,7 +182,7 @@ if($ctr > 0 && $ctr < 8) {
         "Unit" => "none",
         "latlng" => "none",
         "Primary Dispatcher #" => "Travis County FD",
-        "Source" => "http://www.ci.austin.tx.us/fact/default.cfm?sort=10",
+        "Source" => $url,
         "Logo" => "https://pbs.twimg.com/profile_images/3158256826/f9f34aa109a26aa107a2a9edb85a201b_normal.jpeg",
         "Address" => $address,
         "Timestamp" => $timestamp,
@@ -193,7 +190,6 @@ if($ctr > 0 && $ctr < 8) {
     ];
 
     array_push($incidentList,$incident);
-
     echo "       $timestamp:  $description  $address\n";
 
 /*
