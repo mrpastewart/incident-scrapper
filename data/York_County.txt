@@ -1,2 +1,0 @@
-York_County	Epoch=0
-description: TRAFFIC COMPLAINT	address: KENNETH RD	units: none	Epoch: 2872672200

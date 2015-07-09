@@ -1,2 +1,0 @@
-urbana-MD	Epoch=0
-description: CT: OUTSIDE ODOR (NATURAL/LP) / default URBANA CFR4: @I270NB / EXIT 26 (RT80) MAP: 4687C9 Disp: E231,MCRE709	address: 611 Ashford Rd , Wilmington, DE 19803	units: none	Epoch: 2872668960

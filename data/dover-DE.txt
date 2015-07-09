@@ -1,2 +1,0 @@
-dover-DE	Epoch=0
-description: Alarm - Commercial	address: Kent Co Alternative School; 631 Ridgely St; Dover	units: none	Epoch: 2872654140

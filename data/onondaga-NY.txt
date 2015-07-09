@@ -1,5 +1,0 @@
-onondaga-NY	Epoch=0
-description: CALL	address: N MCBRIDE ST	units: none	Epoch: 2872671900
-description: FIRE; Vehicle	address: SB I 81 SB I 81 MM 95	units: none	Epoch: 2872673340
-description: ALARM; Fire	address: N SALINA ST DENTIST OFFICE	units: none	Epoch: 2872673700
-description: CRIMINAL MISCHIEF	address: WESTCOTT ST	units: none	Epoch: 2872673880

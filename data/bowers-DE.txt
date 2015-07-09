@@ -1,2 +1,0 @@
-bowers-DE	Epoch=0
-description: Medical Emergency	address: Milford	units: none	Epoch: 2872550400

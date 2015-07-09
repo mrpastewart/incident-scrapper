@@ -1,7 +1,0 @@
-austin-TX	Epoch=0
-description: Medical Emergency	address: Dover	units: none	Epoch: 2871841380
-austin-TX	Epoch=0
-description: Structure Fire - High Life Hazard	address: Trabant Student Center, 17 W Main St Newark, DE 19702	units: none	Epoch: 2872664460
-description: VEHICLE ACCIDENT-NO INJURIES	address: WILLOW STREET PIKE S & LONG LN, WEST LAMPETER TOWNSHIP	units: none	Epoch: 2872672080
-description: MEDICAL EMERGENCY	address: E OREGON RD & JOHN LANDIS RD, MANHEIM TOWNSHIP	units: none	Epoch: 2872673400
-description: MEDICAL EMERGENCY	address: DORSEA RD & HILLAIRE RD, EAST HEMPFIELD TOWNSHIP	units: none	Epoch: 2872673520
