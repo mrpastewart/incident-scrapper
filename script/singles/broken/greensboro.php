@@ -145,11 +145,36 @@ foreach ($lines as $line) {
         $month = "12";
     }
 
-    $timestamp = "$year-$month-$day $time_portion";
+    $date = "$year/$month/$day";
+    $hrMinSec = $time_portion;
+    $unixValue = strtotime($date) + strtotime($hrMinSec);
+    $timestamp = date("l, F d, Y", strtotime($date));
+    $timestamp = "$timestamp $hrMinSec -0800";
 
-    echo "parsed: \n";
-    echo "\ttimestamp: $timestamp\n";
-    echo "\tdescription: $description\n";
-    echo "\taddress: $address\n";
+    $incident = [
+        "State" => "MD",
+        "City" => "Greensboro",
+        "County" => "Caroline",
+        "Incident" => "none",
+        "Description" => $description,
+        "Unit" => "none",
+        "latlng" => "none",
+        "Primary Dispatcher #" => "Greensboro Vol. Fire Co. ",
+        "Source" => $url,
+        "Logo" => "http://greensborovfc.com/images/layout/bg-logo.png",
+        "Address" => $address,
+        "Timestamp" => $timestamp,
+        "Epoch" => $unixValue,
+    ];
+
+    array_push($incidentList,$incident);
+    echo "       $timestamp:  $description  $address\n";
 }
+$generalInfo = [
+    "curlWorking" => $curlWorking,
+    "parseWorking" => $parseWorking,
+    "agencyName" => "greensboro-MD"
+];
+
+array_push($incidentList,$generalInfo);
 ?>

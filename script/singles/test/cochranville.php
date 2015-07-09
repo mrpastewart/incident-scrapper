@@ -31,8 +31,9 @@ curl_setopt($ch, CURLOPT_URL, $url);
 
 $page = curl_exec($ch);
 
-if (strlen($page) < 200) {
-    die();
+if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200)
+{
+    $curlWorking = false;
 }
 
 $currentTime = time();
@@ -148,10 +149,36 @@ foreach ($lines as $line) {
         $month = "12";
     }
 
-    $timestamp = "$year-$month-$day $time_portion";
+    $date = "$year/$month/$day";
+    $hrMinSec = $time_portion;
+    $unixValue = strtotime($date) + strtotime($hrMinSec);
+    $timestamp = date("l, F d, Y", strtotime($date));
+    $timestamp = "$timestamp $hrMinSec -0800";
 
-    echo "parsed: \n";
-    echo "\ttimestamp: $timestamp\n";
-    echo "\tdescription: $description\n";
-    echo "\taddress: $address\n";
-}?>
+    $incident = [
+        "State" => "DE",
+        "City" => "Chocranville",
+        "County" => "Lancaster",
+        "Incident" => "none",
+        "Description" => $description,
+        "Unit" => "none",
+        "latlng" => "none",
+        "Primary Dispatcher #" => "Chochranville 27 Fire Company",
+        "Source" => $url,
+        "Logo" => "none",
+        "Address" => $address,
+        "Timestamp" => $timestamp,
+        "Epoch" => $unixValue,
+    ];
+
+    array_push($incidentList,$incident);
+    echo "       $timestamp:  $description  $address\n";
+}
+$generalInfo = [
+    "curlWorking" => $curlWorking,
+    "parseWorking" => $parseWorking,
+    "agencyName" => "cochranville-DE"
+];
+
+array_push($incidentList,$generalInfo);
+?>

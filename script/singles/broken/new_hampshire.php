@@ -9,7 +9,7 @@
 $url = "https://symposium-live.com/system/events/index/SouthwesternNewHampshireDistrictFireMutualAid";
 $curlWorking = true;
 $parseWorking = true;
-$state = "PA";
+$state = "NH";
 $incidentList = [];
 
 //
@@ -47,8 +47,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, "client_id=1B4C5893-7751-480F-ADE7-6857D227
 
 $page = curl_exec($ch);
 
-if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200)
-{
+if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200){
     $curlWorking = false;
 }
 
@@ -92,13 +91,31 @@ foreach ($lines as $line) {
     }
     $address .= $city;
 
-    echo "parsed: \n";
-    echo "\tdescription: $description\n";
-    echo "\taddress: $address\n";
+    $incident = [
+        "State" => "PA",
+        "City" => "none",
+        "County" => "none",
+        "Incident" => "none",
+        "Description" => $description,
+        "Unit" => "none",
+        "latlng" => "none",
+        "Primary Dispatcher #" => "Symposium EMLive",
+        "Source" => $url,
+        "Logo" => "none",
+        "Address" => $address,
+        "Timestamp" => "none",
+        "Epoch" => "none",
+    ];
 
-    if (strlen($description) < 1 || preg_match("@MEDICAL@i", $description)) {
-        echo "  skipped\n";
-        continue;
-    }
+    array_push($incidentList,$incident);
+    echo "       none:  $description  $address\n";
+    
 }
+	$generalInfo = [
+    "curlWorking" => $curlWorking,
+    "parseWorking" => $parseWorking,
+    "agencyName" => "new_hampshire-MD"
+];
+
+array_push($incidentList,$generalInfo);
 ?>

@@ -85,6 +85,8 @@ foreach ($lines as $line) {
         "Timestamp" => $timestamp,
         "Epoch" => $unixValue,
     ];
+        echo "       $timestamp:  $description  $address\n";
+
     array_push($incidentList, $incident);
 
     /*echo "parsed: \n";
@@ -105,5 +107,5 @@ $generalInfo = [
     "agencyName" => "Mecc"
 ];
 array_push($incidentList, $generalInfo);
-var_dump($incidentList);
+//var_dump($incidentList);
 ?>

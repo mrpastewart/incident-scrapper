@@ -33,8 +33,7 @@ curl_setopt($ch, CURLOPT_URL, $url);
 
 $page = curl_exec($ch);
 
-if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200)
-{
+if(curl_getinfo($ch,CURLINFO_HTTP_CODE) != 200){
     $curlWorking = false;
 }
 

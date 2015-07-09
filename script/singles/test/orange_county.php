@@ -131,12 +131,6 @@ $unixValue = strtotime($date) + strtotime($hrMinSec);
 $timestamp = date("l, F d, Y", strtotime($date));
 $timestamp = "$timestamp $hrMinSec -0800";
 
-        echo "parsed: \n";
-        echo "\tdescription: $description\n";
-        echo "\taddress: $address\n";
-        echo "\ttimestamp: $timestamp\n";
-        echo "\tlatlng: $latlng\n";
-        echo "\tepoch: $unixValue\n";
 }
 
 if ($description != '' && $address != '')

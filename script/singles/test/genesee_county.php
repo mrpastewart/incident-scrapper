@@ -132,11 +132,36 @@ foreach ($lines as $line) {
         $year = $year - 1;
     }
 
-    $timestamp = "$year-$month-$day $hour:$minute";
+    $date = "$year/$month/$day";
+    $hrMinSec = "$hour:$minute";
+    $unixValue = strtotime($date) + strtotime($hrMinSec);
+    $timestamp = date("l, F d, Y", strtotime($date));
+    $timestamp = "$timestamp $hrMinSec -0800";
 
-    echo "parsed: \n";
-    echo "\ttimestamp: $timestamp\n";
-    echo "\tdescription: $description\n";
-    echo "\taddress: $address\n";
+    $incident = [
+        "State" => "MI",
+        "City" => "none",
+        "County" => "Genesee",
+        "Incident" => "none",
+        "Description" => $description,
+        "Unit" => "none",
+        "latlng" => "none",
+        "Primary Dispatcher #" => "Genesee County Communications Center",
+        "Source" => $url,
+        "Logo" => "http://geneseecounty911.org/images/logo5.jpg",
+        "Address" => $address,
+        "Timestamp" => $timestamp,
+        "Epoch" => $unixValue,
+    ];
+
+    array_push($incidentList,$incident);
+    echo "       $timestamp:  $description  $address\n";
 }
+$generalInfo = [
+    "curlWorking" => $curlWorking,
+    "parseWorking" => $parseWorking,
+    "agencyName" => "genesee-MI"
+];
+
+array_push($incidentList,$generalInfo);
 ?>

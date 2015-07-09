@@ -121,7 +121,7 @@ foreach ($lines as $line) {
 $generalInfo = [
     "curlWorking" => $curlWorking,
     "parseWorking" => $parseWorking,
-    "agencyName" => "austin-TX"
+    "agencyName" => "lancaster_county-PA"
 ];
 
 array_push($incidentList,$generalInfo);

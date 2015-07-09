@@ -73,8 +73,30 @@ foreach ($lines as $line) {
         continue;
     }
 
-    echo "parsed: \n";
-    echo "\tdescription: $description\n";
-    echo "\taddress: $address\n";
+    $incident = [
+        "State" => "TX",
+        "City" => "Wichita Falls",
+        "County" => "Wichita",
+        "Incident" => "none",
+        "Description" => $description,
+        "Unit" => "none",
+        "latlng" => "none",
+        "Primary Dispatcher #" => "Wichita Falls Public Safety 911 Communications & Dispatch Events",
+        "Source" => $url,
+        "Logo" => "none",
+        "Address" => $address,
+        "Timestamp" => "none",
+        "Epoch" => "none",
+    ];
+
+    array_push($incidentList,$incident);
+    echo "       $timestamp:  $description  $address\n";
 }
+		$generalInfo = [
+    "curlWorking" => $curlWorking,
+    "parseWorking" => $parseWorking,
+    "agencyName" => "wichita-TX"
+];
+
+array_push($incidentList,$generalInfo);
 ?>
