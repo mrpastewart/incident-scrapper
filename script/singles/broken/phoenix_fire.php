@@ -39,20 +39,17 @@ $currentTime = time();
 
 $page = preg_replace("@.*>Units</td></tr>@", "", $page);
 $page = preg_replace("@Page will automatically refresh every 60 seconds..*@", "", $page);
-$page = preg_replace("@</table>.*@", "", $page);
-
+//$page = preg_replace("@</table>.*@", "", $page);
+printf($page);
 $lines = explode("<tr>", $page);
 
 foreach ($lines as $line) {
-    if (!preg_match("@<td@", $line)) {
-        continue;
-    }
 
     $line = preg_replace("@<span style=.color:[a-z]+.>@", "", $line);
     $line = preg_replace("@</span>@", "", $line);
     $line = preg_replace("@ +@", " ", $line);
 
-    $line = preg_replace("@ *, *2", ", ", $line);
+    $line = preg_replace("@ *, *@", ", ", $line);
     $line = preg_replace("@</td><td>@", "COLSEP", $line);
 
     list($f1, $f2, $f3, $f4) = explode("COLSEP", $line);
@@ -60,9 +57,33 @@ foreach ($lines as $line) {
     $address = preg_replace("@</a>.*@", "", $f2);
 
     $description = preg_replace("@</a>.*@", "", $f3);
+if($address != '' || $description != ''){
 
-    echo "parsed: \n";
-    echo "\taddress: $address\n";
-    echo "\tdescription = $description\n";
+    $incident = [
+        "State" => "AZ",
+        "City" => "Phoenix",
+        "County" => "Maricopa ",
+        "Incident" => "none",
+        "Description" => $description,
+        "Unit" => "none",
+        "latlng" => "none",
+        "Primary Dispatcher #" => "Phoenix Regional Dispatch Center",
+        "Source" => $url,
+        "Logo" => "https://htms.phoenix.gov/publicweb/Regional-Dispatch.gif",
+        "Address" => $address,
+        "Timestamp" => "none",
+        "Epoch" => "none",
+    ];
+
+    array_push($incidentList,$incident);
+    echo "       none:  $description  $address\n";
+    }
 }
+$generalInfo = [
+    "curlWorking" => $curlWorking,
+    "parseWorking" => $parseWorking,
+    "agencyName" => "phoenix_fire-AZ"
+];
+
+array_push($incidentList,$generalInfo);
 ?>

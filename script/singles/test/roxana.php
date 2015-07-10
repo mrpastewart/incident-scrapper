@@ -59,7 +59,7 @@ foreach ($lines as $line) {
 	if (preg_match("@>Nature:<@", $line) && $ctr == 1) {
 		$ctr++;
 
-		if (preg_match(">Location:<", $line)) {
+		if (preg_match("@>Location:<@", $line)) {
 			$location = preg_replace("@.*>Location:<@", "", $line);
 			$location = preg_replace("@<br.*@", "", $location);
 			$location = preg_replace("@.*/span> *@", "", $location);
